@@ -88,7 +88,7 @@ const WhoWeAre = () => {
               minWidth: 90,
             }}>
               <Typography sx={{ fontWeight: 900, color: theme.palette.primary.dark, lineHeight: 1, fontSize: '2rem', fontFamily: '"Outfit",sans-serif' }}>
-                10+
+                5+
               </Typography>
               <Typography sx={{ fontWeight: 700, color: theme.palette.primary.dark, fontSize: '0.62rem', textTransform: 'uppercase', letterSpacing: 0.5, lineHeight: 1.4, mt: 0.3 }}>
                 Years of<br/>Experience
@@ -113,7 +113,7 @@ const WhoWeAre = () => {
             }}/>
 
             <Typography variant="body1" sx={{ color: theme.palette.text.secondary, mb: 2.5, lineHeight: 1.85, fontSize: '0.97rem' }}>
-              EduGlobe Lanka is Sri Lanka's premier overseas education consultancy with over a decade of hands-on experience. We have successfully guided thousands of students into top universities across the UK, Canada, Australia, USA, and New Zealand.
+              EduGlobe Lanka is Sri Lanka's premier overseas education consultancy with over 5 years of hands-on experience. We have successfully guided 200+ students into top universities across the UK, Canada, Australia, USA, and New Zealand.
             </Typography>
             <Typography variant="body1" sx={{ color: theme.palette.text.secondary, mb: 4, lineHeight: 1.85, fontSize: '0.97rem' }}>
               Our certified counselors deliver fully personalised guidance — from university selection and application writing to visa processing and post-arrival support — ensuring a seamless journey from start to finish.

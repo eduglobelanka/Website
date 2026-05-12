@@ -8,46 +8,46 @@ const destinations = [
   {
     name: 'United Kingdom',
     image: '/assets/images/country_uk.png',
-    badge: 'Most Popular',
-    programs: '130+ Universities',
-    highlight: 'Graduate Route Visa',
-    badgeBg: '#d32f2f',
-    span: { xs: 12, sm: 12, md: 6 },
-  },
-  {
-    name: 'Canada',
-    image: '/assets/images/country_canada.png',
     badge: 'Heritage & Quality',
-    programs: '200+ Universities',
-    highlight: 'PR-Friendly & Post-Study Work Permit',
+    programs: 'Top Universities',
+    highlight: 'University of Hertfordshire, Cardiff Met, Coventry University',
     badgeBg: '#1565c0',
-    span: { xs: 12, sm: 6, md: 6 },
+    span: { xs: 12, sm: 6, md: 4 },
   },
   {
     name: 'Australia',
     image: '/assets/images/country_aus.png',
     badge: 'Top Rated',
-    programs: '150+ Universities',
-    highlight: 'Post-Study Work Rights up to 4 Years',
+    programs: 'Top Universities',
+    highlight: 'Victoria University, University of Canberra',
     badgeBg: '#125A41',
     span: { xs: 12, sm: 6, md: 4 },
   },
   {
-    name: 'New Zealand',
-    image: '/assets/images/country_nz.png',
-    badge: 'Safe & Peaceful',
-    programs: '80+ Institutions',
-    highlight: 'Open Work Policy',
+    name: 'Germany',
+    image: '/assets/images/country_germany.png',
+    badge: 'Engineering & Tech',
+    programs: 'Top Universities',
+    highlight: 'Constructor University',
+    badgeBg: '#d32f2f',
+    span: { xs: 12, sm: 6, md: 4 },
+  },
+  {
+    name: 'France',
+    image: '/assets/images/country_france.png',
+    badge: 'Business & Arts',
+    programs: 'Top Universities',
+    highlight: 'Burgundy School of Business',
     badgeBg: '#00796b',
     span: { xs: 12, sm: 6, md: 4 },
   },
   {
-    name: 'USA',
-    image: '/assets/images/country_usa.png',
-    badge: 'World-Class',
-    programs: '500+ Universities',
-    highlight: 'OPT & STEM Extension Available',
-    badgeBg: '#1565c0',
+    name: 'Canada',
+    image: '/assets/images/country_canada.png',
+    badge: 'Most Popular',
+    programs: 'Top Universities',
+    highlight: 'PR-Friendly & High Visa Success',
+    badgeBg: '#d32f2f',
     span: { xs: 12, sm: 6, md: 4 },
   },
 ];
@@ -167,7 +167,7 @@ const Destinations = () => {
         </Box>
 
         {/* Cards Grid */}
-        <Grid container spacing={3}>
+        <Grid container spacing={3} justifyContent="center">
           {destinations.map((dest, i) => (
             <Grid item key={dest.name} xs={dest.span.xs} sm={dest.span.sm} md={dest.span.md}>
               <DestCard

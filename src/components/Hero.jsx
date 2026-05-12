@@ -17,10 +17,10 @@ const DEST_FLAGS   = ['🇬🇧', '🇨🇦', '🇦🇺', '🇺🇸', '🇳🇿'
 
 // ── Stats ────────────────────────────────────────────────────
 const STATS = [
-  { end: 5000, suffix: '+', label: 'Students Placed',      icon: <Users size={17}/> },
-  { end: 98,   suffix: '%', label: 'Visa Success Rate',    icon: <TrendingUp size={17}/> },
-  { end: 150,  suffix: '+', label: 'Partner Universities', icon: <BookOpen size={17}/> },
-  { end: 12,   suffix: '+', label: 'Years Experience',     icon: <Star size={17}/> },
+  { end: 200, suffix: '+', label: 'Students Placed',      icon: <Users size={17}/> },
+  { end: 98,  suffix: '%', label: 'Visa Success Rate',    icon: <TrendingUp size={17}/> },
+  { end: 200, suffix: '+', label: 'Partner Universities', icon: <BookOpen size={17}/> },
+  { end: 5,   suffix: '+', label: 'Years Experience',     icon: <Star size={17}/> },
 ];
 
 // ── Feature cards ────────────────────────────────────────────
