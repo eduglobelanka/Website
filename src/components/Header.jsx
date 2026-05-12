@@ -93,7 +93,7 @@ const Header = () => {
         ))}
       </List>
       <Box sx={{ p: 3 }}>
-        <Button variant="contained" color="secondary" fullWidth sx={{ borderRadius: 30, py: 1.5, fontWeight: 700 }}>
+        <Button variant="contained" color="secondary" fullWidth onClick={() => scrollToSection('#contact')} sx={{ borderRadius: 30, py: 1.5, fontWeight: 700 }}>
           Free Consultation
         </Button>
       </Box>
@@ -187,6 +187,7 @@ const Header = () => {
               <Button
                 variant="contained"
                 color="primary"
+                onClick={() => scrollToSection('#contact')}
                 sx={{ ml: 2, px: 3, py: 1, borderRadius: 30, fontWeight: 700, fontSize: '0.9rem' }}
               >
                 Free Consultation

@@ -6,13 +6,22 @@ import { MapPin, ArrowRight } from 'lucide-react';
 
 const destinations = [
   {
-    name: 'Canada',
-    image: '/assets/images/country_canada.png',
+    name: 'United Kingdom',
+    image: '/assets/images/country_uk.png',
     badge: 'Most Popular',
-    programs: '200+ Universities',
-    highlight: 'PR-Friendly & Post-Study Work Permit',
+    programs: '130+ Universities',
+    highlight: 'Graduate Route Visa',
     badgeBg: '#d32f2f',
     span: { xs: 12, sm: 12, md: 6 },
+  },
+  {
+    name: 'Canada',
+    image: '/assets/images/country_canada.png',
+    badge: 'Heritage & Quality',
+    programs: '200+ Universities',
+    highlight: 'PR-Friendly & Post-Study Work Permit',
+    badgeBg: '#1565c0',
+    span: { xs: 12, sm: 6, md: 6 },
   },
   {
     name: 'Australia',
@@ -21,15 +30,6 @@ const destinations = [
     programs: '150+ Universities',
     highlight: 'Post-Study Work Rights up to 4 Years',
     badgeBg: '#125A41',
-    span: { xs: 12, sm: 6, md: 6 },
-  },
-  {
-    name: 'United Kingdom',
-    image: '/assets/images/country_uk.png',
-    badge: 'Heritage & Quality',
-    programs: '130+ Universities',
-    highlight: 'Graduate Route Visa',
-    badgeBg: '#1565c0',
     span: { xs: 12, sm: 6, md: 4 },
   },
   {

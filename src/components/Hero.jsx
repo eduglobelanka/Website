@@ -12,8 +12,8 @@ const ORANGE = '#F4A522';   // restored original orange
 const DARK   = '#06120C';
 
 // ── Destinations — NO flag emojis (breaks on Windows) ───────
-const DESTINATIONS = ['Canada', 'United Kingdom', 'Australia', 'USA', 'New Zealand'];
-const DEST_FLAGS   = ['🇨🇦', '🇬🇧', '🇦🇺', '🇺🇸', '🇳🇿']; // only for badge icons on right
+const DESTINATIONS = ['United Kingdom', 'Canada', 'Australia', 'USA', 'New Zealand'];
+const DEST_FLAGS   = ['🇬🇧', '🇨🇦', '🇦🇺', '🇺🇸', '🇳🇿']; // only for badge icons on right
 
 // ── Stats ────────────────────────────────────────────────────
 const STATS = [

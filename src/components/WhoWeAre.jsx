@@ -113,7 +113,7 @@ const WhoWeAre = () => {
             }}/>
 
             <Typography variant="body1" sx={{ color: theme.palette.text.secondary, mb: 2.5, lineHeight: 1.85, fontSize: '0.97rem' }}>
-              EduGlobe Lanka is Sri Lanka's premier overseas education consultancy with over a decade of hands-on experience. We have successfully guided thousands of students into top universities across Canada, Australia, the UK, USA, and New Zealand.
+              EduGlobe Lanka is Sri Lanka's premier overseas education consultancy with over a decade of hands-on experience. We have successfully guided thousands of students into top universities across the UK, Canada, Australia, USA, and New Zealand.
             </Typography>
             <Typography variant="body1" sx={{ color: theme.palette.text.secondary, mb: 4, lineHeight: 1.85, fontSize: '0.97rem' }}>
               Our certified counselors deliver fully personalised guidance — from university selection and application writing to visa processing and post-arrival support — ensuring a seamless journey from start to finish.

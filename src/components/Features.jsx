@@ -3,7 +3,7 @@ import { Box, Container, Typography, useTheme } from '@mui/material';
 import { Globe, Briefcase, Award, Clock, HeartHandshake, CheckCircle2 } from 'lucide-react';
 
 const features = [
-  { icon: <Globe size={30} />, title: 'Global University Network', desc: 'Access to 500+ partner universities across Canada, UK, Australia, New Zealand & USA.' },
+  { icon: <Globe size={30} />, title: 'Global University Network', desc: 'Access to 500+ partner universities across the UK, Canada, Australia, New Zealand & USA.' },
   { icon: <Briefcase size={30} />, title: 'End-to-End Support', desc: 'From university selection and application to visa interview preparation — we handle it all.' },
   { icon: <Award size={30} />, title: 'Scholarship Guidance', desc: 'We identify and help you apply for the right scholarships to minimize your financial burden.' },
   { icon: <Clock size={30} />, title: 'Fast & Easy Processing', desc: 'Streamlined processes ensure your applications are submitted correctly and on time.' },

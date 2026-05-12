@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Container, Typography, TextField, Button, useTheme, Collapse } from '@mui/material';
+import { Box, Container, Typography, TextField, Button, useTheme, Collapse, MenuItem } from '@mui/material';
 import { Send, Phone, Mail, MapPin, Clock, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -10,7 +10,7 @@ const contactInfo = [
   { icon: <Clock size={20} />, label: 'Hours',  lines: ['Mon – Fri: 9:00 AM – 6:00 PM', 'Sat: 9:00 AM – 2:00 PM'] },
 ];
 
-const destinations = ['Canada', 'United Kingdom', 'Australia', 'USA', 'New Zealand', 'Other'];
+const destinations = ['United Kingdom', 'Canada', 'Australia', 'USA', 'New Zealand', 'Other'];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
@@ -193,11 +193,15 @@ const Contact = () => {
                     <TextField label="Phone Number"     name="phone"   value={form.phone}   onChange={handleChange} fullWidth sx={inputSx} />
                     <TextField
                       label="Preferred Destination" name="destination" value={form.destination}
-                      onChange={handleChange} select fullWidth SelectProps={{ native: true }}
-                      sx={{ ...inputSx, '& select': { color: form.destination ? 'white' : 'rgba(255,255,255,0.35)', bgcolor: 'transparent' }, '& select option': { bgcolor: '#0a2418', color: 'white' } }}
+                      onChange={handleChange} select fullWidth
+                      sx={{ ...inputSx, '& .MuiSelect-select': { color: form.destination ? 'white' : 'rgba(255,255,255,0.35)' } }}
+                      SelectProps={{
+                        displayEmpty: true,
+                        MenuProps: { PaperProps: { sx: { bgcolor: '#0a2418', color: 'white' } } }
+                      }}
                     >
-                      <option value="">Select destination</option>
-                      {destinations.map((d) => <option key={d} value={d}>{d}</option>)}
+                      <MenuItem value="" disabled>Select destination</MenuItem>
+                      {destinations.map((d) => <MenuItem key={d} value={d} sx={{ '&:hover': { bgcolor: 'rgba(244,165,34,0.15)' }, '&.Mui-selected': { bgcolor: 'rgba(244,165,34,0.25)', '&:hover': { bgcolor: 'rgba(244,165,34,0.35)' } } }}>{d}</MenuItem>)}
                     </TextField>
                   </Box>
 

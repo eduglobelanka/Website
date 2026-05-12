@@ -31,7 +31,7 @@ const YT = () => (
 );
 
 const quickLinks = ['Home', 'About Us', 'Services', 'Study Destinations', 'Events & Seminars', 'Gallery', 'Contact Us'];
-const destLinks = ['Study in Canada', 'Study in Australia', 'Study in UK', 'Study in USA', 'Study in New Zealand', 'Scholarships'];
+const destLinks = ['Study in UK', 'Study in Canada', 'Study in Australia', 'Study in USA', 'Study in New Zealand', 'Scholarships'];
 const serviceLinks = ['University Selection', 'Visa Assistance', 'IELTS Coaching', 'SOP & LOR Writing', 'Scholarship Guidance', 'Pre-Departure Briefing'];
 
 const FooterLinks = ({ items }) => {
