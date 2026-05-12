@@ -139,7 +139,7 @@ const Footer = () => {
 
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 2 }}>
             <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.35)' }}>
-              © {new Date().getFullYear()} EduGlobe Lanka. All Rights Reserved.
+              © {new Date().getFullYear()} EduGlobeLanka Consultancy. All Rights Reserved.
             </Typography>
             <Box sx={{ display: 'flex', gap: 3, flexWrap: 'wrap' }}>
               {['Privacy Policy', 'Terms & Conditions', 'Sitemap'].map((t) => (

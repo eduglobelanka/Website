@@ -51,7 +51,7 @@ const WhoWeAre = () => {
             }}>
               <img
                 src="/assets/images/student_1.png"
-                alt="Happy Student"
+                alt="EduGlobeLanka Consultancy Student Success"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
               />
             </Box>
@@ -69,7 +69,7 @@ const WhoWeAre = () => {
             }}>
               <img
                 src="/assets/images/student_2.png"
-                alt="Education Counselor"
+                alt="EduGlobeLanka Overseas Education Counselor"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
               />
             </Box>

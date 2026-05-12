@@ -42,7 +42,7 @@ const Gallery = () => {
             >
               <img
                 src={img}
-                alt={`Gallery ${index}`}
+                alt={`EduGlobeLanka Consultancy Gallery Moment ${index + 1}`}
                 style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s ease' }}
               />
             </Box>

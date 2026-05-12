@@ -113,6 +113,10 @@ const Hero = () => {
 
   return (
     <Box id="home">
+      {/* Visually hidden h1 for SEO */}
+      <Typography component="h1" sx={{ position: 'absolute', width: 1, height: 1, padding: 0, margin: -1, overflow: 'hidden', clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', border: 0 }}>
+        EduGlobeLanka Consultancy - Sri Lanka's #1 Student Visa Experts
+      </Typography>
 
       {/* ════════════════ HERO ════════════════ */}
       <Box sx={{
@@ -250,7 +254,7 @@ const Hero = () => {
 
             {/* "Study in" line */}
             <motion.div custom={0.15} initial="hidden" animate="visible" variants={fadeUp}>
-              <Typography variant="h1" sx={{
+              <Typography variant="h1" component="h2" sx={{
                 fontSize: { xs: '2.8rem', sm: '3.6rem', md: '4.8rem', lg: '5.4rem' },
                 lineHeight: 1.06, fontWeight: 900, letterSpacing: '-2px', mb: 0,
               }}>
@@ -260,7 +264,7 @@ const Hero = () => {
 
             {/* Typewriter line */}
             <motion.div custom={0.22} initial="hidden" animate="visible" variants={fadeUp}>
-              <Typography variant="h1" sx={{
+              <Typography variant="h1" component="h2" sx={{
                 fontSize: { xs: '2.8rem', sm: '3.6rem', md: '4.8rem', lg: '5.4rem' },
                 lineHeight: 1.06, fontWeight: 900, letterSpacing: '-2px',
                 mb: 3, minHeight: { xs: '3.8rem', md: '5.8rem', lg: '6.6rem' },
