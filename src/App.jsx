@@ -5,15 +5,15 @@ import { ChevronUp } from 'lucide-react';
 import theme from './theme';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Partners from './components/Partners';
-import Features from './components/Features';
-import WhoWeAre from './components/WhoWeAre';
-import Destinations from './components/Destinations';
-import Events from './components/Events';
-import News from './components/News';
-import Gallery from './components/Gallery';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+const Partners = React.lazy(() => import('./components/Partners'));
+const Features = React.lazy(() => import('./components/Features'));
+const WhoWeAre = React.lazy(() => import('./components/WhoWeAre'));
+const Destinations = React.lazy(() => import('./components/Destinations'));
+const Events = React.lazy(() => import('./components/Events'));
+const News = React.lazy(() => import('./components/News'));
+const Gallery = React.lazy(() => import('./components/Gallery'));
+const Contact = React.lazy(() => import('./components/Contact'));
+const Footer = React.lazy(() => import('./components/Footer'));
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 function ScrollToTopButton() {
@@ -50,16 +50,20 @@ function App() {
       <Header />
       <main>
         <Hero />
-        <Partners />
-        <Features />
-        <WhoWeAre />
-        <Destinations />
-        <Events />
-        <News />
-        <Gallery />
-        <Contact />
+        <React.Suspense fallback={<div style={{ minHeight: '50vh' }}></div>}>
+          <Partners />
+          <Features />
+          <WhoWeAre />
+          <Destinations />
+          <Events />
+          <News />
+          <Gallery />
+          <Contact />
+        </React.Suspense>
       </main>
-      <Footer />
+      <React.Suspense fallback={null}>
+        <Footer />
+      </React.Suspense>
       <ScrollToTopButton />
       <Analytics />
       <SpeedInsights />
