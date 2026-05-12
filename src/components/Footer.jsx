@@ -75,9 +75,7 @@ const Footer = () => {
             {/* Brand */}
             <Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2.5 }}>
-                <Box sx={{ bgcolor: theme.palette.secondary.main, borderRadius: 2, p: 0.9, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <GraduationCap size={24} color={theme.palette.primary.dark} />
-                </Box>
+                <img src="/eduglobelogo.png" alt="EduGlobeLanka Logo" style={{ height: 60, objectFit: 'contain' }} />
                 <Box>
                   <Typography sx={{ fontWeight: 800, fontSize: '1.3rem', color: 'white', lineHeight: 1, fontFamily: '"Outfit",sans-serif' }}>EduGlobe</Typography>
                   <Typography sx={{ fontWeight: 700, fontSize: '0.6rem', color: theme.palette.secondary.main, letterSpacing: '0.32em' }}>LANKA</Typography>
@@ -119,9 +117,8 @@ const Footer = () => {
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
                 {[
                   { Icon: MapPin, text: 'No. 45, Duplication Road,\nColombo 03, Sri Lanka' },
-                  { Icon: Phone, text: '+94 77 123 4567' },
-                  { Icon: Phone, text: '+94 11 234 5678' },
-                  { Icon: Mail, text: 'info@eduglobelanka.com' },
+                  { Icon: Phone, text: '+44 7401 148372' },
+                  { Icon: Mail, text: 'Eduglobelankaconsultancy@gmail.com' },
                 ].map(({ Icon, text }, i) => (
                   <Box key={i} sx={{ display: 'flex', gap: 2, alignItems: 'flex-start' }}>
                     <Icon size={16} color={theme.palette.secondary.main} style={{ flexShrink: 0, marginTop: 2 }} />

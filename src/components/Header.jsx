@@ -64,10 +64,10 @@ const Header = () => {
     <Box sx={{ width: 300, height: '100%', display: 'flex', flexDirection: 'column' }}>
       <Box sx={{ p: 3, display: 'flex', justifyContent: 'space-between', alignItems: 'center', bgcolor: theme.palette.primary.dark }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <GraduationCap color={theme.palette.secondary.main} size={28} />
+          <img src="/eduglobelogo.png" alt="EduGlobeLanka Logo" style={{ height: 40, objectFit: 'contain' }} />
           <Box>
             <Typography variant="h6" sx={{ fontWeight: 800, color: 'white', lineHeight: 1 }}>EduGlobe</Typography>
-            <Typography variant="caption" sx={{ color: theme.palette.secondary.main, fontWeight: 700, letterSpacing: 2 }}>LANKA</Typography>
+            <Typography variant="caption" sx={{ color: theme.palette.secondary.main, fontWeight: 700, letterSpacing: 2 }}>LANKA CONSULTANCY</Typography>
           </Box>
         </Box>
         <IconButton onClick={() => setMobileOpen(false)} sx={{ color: 'white' }}>
@@ -117,11 +117,11 @@ const Header = () => {
             <Box sx={{ display: 'flex', gap: 4 }}>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'rgba(255,255,255,0.85)' }}>
                 <PhoneIcon size={14} color={theme.palette.secondary.main} />
-                <Typography variant="caption" sx={{ fontWeight: 500 }}>+94 77 123 4567</Typography>
+                <Typography variant="caption" sx={{ fontWeight: 500 }}>+44 7401 148372</Typography>
               </Box>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'rgba(255,255,255,0.85)' }}>
                 <Mail size={14} color={theme.palette.secondary.main} />
-                <Typography variant="caption" sx={{ fontWeight: 500 }}>info@eduglobelanka.com</Typography>
+                <Typography variant="caption" sx={{ fontWeight: 500 }}>Eduglobelankaconsultancy@gmail.com</Typography>
               </Box>
             </Box>
             <Box sx={{ display: 'flex', gap: 2, color: 'rgba(255,255,255,0.8)' }}>
@@ -139,9 +139,7 @@ const Header = () => {
         <Toolbar disableGutters sx={{ py: 1.5, justifyContent: 'space-between' }}>
           {/* Logo */}
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-            <Box sx={{ bgcolor: theme.palette.primary.main, borderRadius: 2, p: 0.8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <GraduationCap color="white" size={28} />
-            </Box>
+            <img src="/eduglobelogo.png" alt="EduGlobeLanka Logo" style={{ height: 48, objectFit: 'contain' }} />
             <Box sx={{ lineHeight: 1 }}>
               <Typography sx={{ fontFamily: '"Outfit", sans-serif', fontWeight: 800, fontSize: '1.4rem', color: theme.palette.primary.main, lineHeight: 1 }}>
                 EduGlobe

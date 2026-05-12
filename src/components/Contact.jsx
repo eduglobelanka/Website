@@ -4,8 +4,8 @@ import { Send, Phone, Mail, MapPin, Clock, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const contactInfo = [
-  { icon: <Phone size={20} />, label: 'Phone',  lines: ['+94 77 123 4567', '+94 11 234 5678'] },
-  { icon: <Mail size={20} />,  label: 'Email',  lines: ['info@eduglobelanka.com', 'apply@eduglobelanka.com'] },
+  { icon: <Phone size={20} />, label: 'Phone',  lines: ['+44 7401 148372'] },
+  { icon: <Mail size={20} />,  label: 'Email',  lines: ['Eduglobelankaconsultancy@gmail.com'] },
   { icon: <MapPin size={20} />,label: 'Office', lines: ['No. 45, Duplication Road,', 'Colombo 03, Sri Lanka'] },
   { icon: <Clock size={20} />, label: 'Hours',  lines: ['Mon – Fri: 9:00 AM – 6:00 PM', 'Sat: 9:00 AM – 2:00 PM'] },
 ];
@@ -31,7 +31,7 @@ const Contact = () => {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch('https://formsubmit.co/ajax/tharsiegan2001@gmail.com', {
+      const res = await fetch('https://formsubmit.co/ajax/Eduglobelankaconsultancy@gmail.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
@@ -158,12 +158,12 @@ const Contact = () => {
                       </Typography>
                       <Typography sx={{ color: 'rgba(255,255,255,0.72)', fontSize: '0.82rem', lineHeight: 1.75 }}>
                         FormSubmit has sent a <strong style={{ color: 'white' }}>confirmation email</strong> to{' '}
-                        <strong style={{ color: 'white' }}>info@eduglobelanka.com</strong>.
+                        <strong style={{ color: 'white' }}>Eduglobelankaconsultancy@gmail.com</strong>.
                         Open that email and click <strong style={{ color: 'white' }}>"Confirm"</strong>, then resubmit this form.
                         This is a <em>one-time</em> step.
                       </Typography>
                       <Button
-                        href="mailto:info@eduglobelanka.com?subject=Study Abroad Enquiry"
+                        href="mailto:Eduglobelankaconsultancy@gmail.com?subject=Study Abroad Enquiry"
                         component="a"
                         size="small"
                         sx={{ mt: 1.5, color: '#FCD34D', border: '1px solid rgba(252,211,77,0.45)', borderRadius: 30, px: 2.5, fontSize: '0.78rem', '&:hover': { bgcolor: 'rgba(252,211,77,0.08)' } }}
@@ -179,8 +179,8 @@ const Contact = () => {
                       <Typography sx={{ color: '#FCA5A5', fontWeight: 700, fontSize: '0.88rem', mb: 0.5 }}>Connection error</Typography>
                       <Typography sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.82rem' }}>
                         Please check your internet connection or email us at{' '}
-                        <Box component="a" href="mailto:info@eduglobelanka.com" sx={{ color: '#F4A522', textDecoration: 'none' }}>
-                          info@eduglobelanka.com
+                        <Box component="a" href="mailto:Eduglobelankaconsultancy@gmail.com" sx={{ color: '#F4A522', textDecoration: 'none' }}>
+                          Eduglobelankaconsultancy@gmail.com
                         </Box>
                       </Typography>
                     </Box>
