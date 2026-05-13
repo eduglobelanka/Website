@@ -2,9 +2,9 @@ import React from 'react';
 import { Box, Container, Typography, useTheme } from '@mui/material';
 
 const partners = [
-  "University of Toronto", "University of Melbourne", "King's College London", 
-  "University of Auckland", "Seneca College", "RMIT University", 
-  "University of British Columbia", "University of Sydney"
+  "University of Hertfordshire", "University of East London", "King's College London", 
+  "University of Westminster", "Queen Mary University of London", "Brunel University London", 
+  "City, University of London", "Middlesex University London"
 ];
 
 const Partners = () => {
