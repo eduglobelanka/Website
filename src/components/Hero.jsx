@@ -122,7 +122,7 @@ const Hero = () => {
       <Box sx={{
         position: 'relative',
         minHeight: '100vh',
-        backgroundImage: 'url(/assets/images/hero_bg.png)',
+        backgroundImage: 'url(/assets/images/hero_bg.webp)',
         backgroundSize: 'cover',
         backgroundPosition: 'center 25%',
         display: 'flex',

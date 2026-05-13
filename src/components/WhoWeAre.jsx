@@ -50,7 +50,7 @@ const WhoWeAre = () => {
               bgcolor: theme.palette.primary.light,
             }}>
               <img
-                src="/assets/images/student_1.png"
+                src="/assets/images/student_1.webp"
                 alt="EduGlobeLanka Consultancy Student Success"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
               />
@@ -68,7 +68,7 @@ const WhoWeAre = () => {
               bgcolor: theme.palette.secondary.light,
             }}>
               <img
-                src="/assets/images/student_2.png"
+                src="/assets/images/student_2.webp"
                 alt="EduGlobeLanka Overseas Education Counselor"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
               />

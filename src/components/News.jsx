@@ -7,21 +7,21 @@ const newsItems = [
     title: "Canada's New Study Permit Rules: What You Need to Know",
     date: "April 15, 2026",
     author: "Admin",
-    image: "/assets/images/news_canada_rules.png",
+    image: "/assets/images/news_canada_rules.webp",
     excerpt: "Important updates regarding study permits and work rights in Canada for international students...",
   },
   {
     title: "How to Write a Winning Statement of Purpose (SOP)",
     date: "April 10, 2026",
     author: "Counsellor",
-    image: "/assets/images/news_sop_writing.png",
+    image: "/assets/images/news_sop_writing.webp",
     excerpt: "A step-by-step guide to crafting a compelling SOP that increases your admission chances...",
   },
   {
     title: "Top 10 Scholarships for Sri Lankan Students in 2026",
     date: "April 05, 2026",
     author: "Scholarship Team",
-    image: "/assets/images/country_uk.png", 
+    image: "/assets/images/country_uk.webp", 
     excerpt: "Explore the most generous scholarship opportunities available for students from Sri Lanka...",
   }
 ];

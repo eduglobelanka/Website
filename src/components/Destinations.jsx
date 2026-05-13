@@ -7,7 +7,7 @@ import { MapPin, ArrowRight } from 'lucide-react';
 const destinations = [
   {
     name: 'United Kingdom',
-    image: '/assets/images/country_uk.png',
+    image: '/assets/images/country_uk.webp',
     badge: 'Heritage & Quality',
     programs: 'Top Universities',
     highlight: 'University of Hertfordshire, Cardiff Met, Coventry University',
@@ -16,7 +16,7 @@ const destinations = [
   },
   {
     name: 'Australia',
-    image: '/assets/images/country_aus.png',
+    image: '/assets/images/country_aus.webp',
     badge: 'Top Rated',
     programs: 'Top Universities',
     highlight: 'Victoria University, University of Canberra',
@@ -25,7 +25,7 @@ const destinations = [
   },
   {
     name: 'Germany',
-    image: '/assets/images/country_germany.png',
+    image: '/assets/images/country_germany.webp',
     badge: 'Engineering & Tech',
     programs: 'Top Universities',
     highlight: 'Constructor University',
@@ -34,7 +34,7 @@ const destinations = [
   },
   {
     name: 'France',
-    image: '/assets/images/country_france.png',
+    image: '/assets/images/country_france.webp',
     badge: 'Business & Arts',
     programs: 'Top Universities',
     highlight: 'Burgundy School of Business',
@@ -43,7 +43,7 @@ const destinations = [
   },
   {
     name: 'Canada',
-    image: '/assets/images/country_canada.png',
+    image: '/assets/images/country_canada.webp',
     badge: 'Most Popular',
     programs: 'Top Universities',
     highlight: 'PR-Friendly & High Visa Success',

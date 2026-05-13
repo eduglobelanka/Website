@@ -2,12 +2,12 @@ import React from 'react';
 import { Box, Container, Typography, useTheme } from '@mui/material';
 
 const galleryImages = [
-  "/assets/images/gallery_1.png",
-  "/assets/images/gallery_2.png",
-  "/assets/images/student_1.png",
-  "/assets/images/student_2.png",
-  "/assets/images/country_canada.png",
-  "/assets/images/country_aus.png"
+  "/assets/images/gallery_1.webp",
+  "/assets/images/gallery_2.webp",
+  "/assets/images/student_1.webp",
+  "/assets/images/student_2.webp",
+  "/assets/images/country_canada.webp",
+  "/assets/images/country_aus.webp"
 ];
 
 const Gallery = () => {
