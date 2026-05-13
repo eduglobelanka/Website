@@ -116,7 +116,7 @@ const Contact = () => {
                   <Box>
                     <Typography sx={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.72rem', fontWeight: 700, letterSpacing: 1.5, textTransform: 'uppercase', mb: 0.5 }}>{c.label}</Typography>
                     {c.lines.map((l) => (
-                      <Typography key={l} sx={{ color: 'rgba(255,255,255,0.82)', fontSize: '0.9rem', lineHeight: 1.65 }}>{l}</Typography>
+                      <Typography key={l} sx={{ color: 'rgba(255,255,255,0.82)', fontSize: '0.9rem', lineHeight: 1.65, wordBreak: 'break-word' }}>{l}</Typography>
                     ))}
                   </Box>
                 </Box>
@@ -126,7 +126,7 @@ const Contact = () => {
 
           {/* Right — form */}
           <motion.div custom={0.15} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={fadeUp}>
-            <Box sx={{ bgcolor: 'rgba(255,255,255,0.035)', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 4, p: { xs: 3.5, md: 5 } }}>
+            <Box sx={{ bgcolor: 'rgba(255,255,255,0.035)', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 4, p: { xs: 2.5, sm: 3.5, md: 5 } }}>
 
               {submitted ? (
                 /* Success */
@@ -156,7 +156,7 @@ const Contact = () => {
                       <Typography sx={{ color: '#FCD34D', fontWeight: 700, fontSize: '0.88rem', mb: 1 }}>
                         ⚠️ One-time email activation required
                       </Typography>
-                      <Typography sx={{ color: 'rgba(255,255,255,0.72)', fontSize: '0.82rem', lineHeight: 1.75 }}>
+                      <Typography sx={{ color: 'rgba(255,255,255,0.72)', fontSize: '0.82rem', lineHeight: 1.75, wordBreak: 'break-word' }}>
                         FormSubmit has sent a <strong style={{ color: 'white' }}>confirmation email</strong> to{' '}
                         <strong style={{ color: 'white' }}>Eduglobelankaconsultancy@gmail.com</strong>.
                         Open that email and click <strong style={{ color: 'white' }}>"Confirm"</strong>, then resubmit this form.
