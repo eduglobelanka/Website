@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
 import {
   Users, BookOpen, GraduationCap, FileText,
   ArrowRight, CheckCircle, Star, TrendingUp, MapPin,
@@ -33,14 +33,18 @@ const FEATURES = [
 
 // ── Particles ────────────────────────────────────────────────
 const PARTICLES = [
-  { w: 7, h: 7, top: '14%', left: '7%', dur: 7, delay: 0, col: `rgba(244,165,34,0.55)` },
-  { w: 5, h: 5, top: '28%', left: '20%', dur: 9, delay: 1.2, col: `rgba(18,90,65,0.6)` },
-  { w: 9, h: 9, top: '62%', left: '4%', dur: 8, delay: 0.5, col: `rgba(244,165,34,0.4)` },
-  { w: 6, h: 6, top: '78%', left: '25%', dur: 10, delay: 2, col: `rgba(255,255,255,0.22)` },
-  { w: 4, h: 4, top: '42%', left: '32%', dur: 6, delay: 0.8, col: `rgba(244,165,34,0.35)` },
-  { w: 8, h: 8, top: '20%', left: '85%', dur: 7, delay: 0.3, col: `rgba(18,90,65,0.5)` },
-  { w: 5, h: 5, top: '52%', left: '90%', dur: 9, delay: 1.8, col: `rgba(244,165,34,0.45)` },
-  { w: 6, h: 6, top: '72%', left: '78%', dur: 7, delay: 0.9, col: `rgba(255,255,255,0.18)` },
+  { w: 7,  h: 7,  top: '14%', left: '7%',  dur: 7,  delay: 0,   col: `rgba(244,165,34,0.55)` },
+  { w: 5,  h: 5,  top: '28%', left: '20%', dur: 9,  delay: 1.2, col: `rgba(18,90,65,0.6)`    },
+  { w: 9,  h: 9,  top: '62%', left: '4%',  dur: 8,  delay: 0.5, col: `rgba(244,165,34,0.4)`  },
+  { w: 6,  h: 6,  top: '78%', left: '25%', dur: 10, delay: 2,   col: `rgba(255,255,255,0.22)` },
+  { w: 4,  h: 4,  top: '42%', left: '32%', dur: 6,  delay: 0.8, col: `rgba(244,165,34,0.35)` },
+  { w: 8,  h: 8,  top: '20%', left: '85%', dur: 7,  delay: 0.3, col: `rgba(18,90,65,0.5)`    },
+  { w: 5,  h: 5,  top: '52%', left: '90%', dur: 9,  delay: 1.8, col: `rgba(244,165,34,0.45)` },
+  { w: 6,  h: 6,  top: '72%', left: '78%', dur: 7,  delay: 0.9, col: `rgba(255,255,255,0.18)` },
+  { w: 3,  h: 3,  top: '35%', left: '55%', dur: 5,  delay: 0.4, col: `rgba(244,165,34,0.5)`  },
+  { w: 10, h: 10, top: '8%',  left: '45%', dur: 11, delay: 1.5, col: `rgba(18,90,65,0.35)`   },
+  { w: 4,  h: 4,  top: '88%', left: '60%', dur: 8,  delay: 2.5, col: `rgba(244,165,34,0.3)`  },
+  { w: 7,  h: 7,  top: '50%', left: '70%', dur: 6,  delay: 0.2, col: `rgba(255,255,255,0.14)` },
 ];
 
 // ── Animated counter ─────────────────────────────────────────
@@ -105,6 +109,14 @@ const fadeRight = {
   hidden: { opacity: 0, x: 48 },
   visible: (d = 0) => ({ opacity: 1, x: 0, transition: { duration: 0.6, delay: d, ease: 'easeOut' } }),
 };
+const fadeLeft = {
+  hidden: { opacity: 0, x: -48 },
+  visible: (d = 0) => ({ opacity: 1, x: 0, transition: { duration: 0.6, delay: d, ease: 'easeOut' } }),
+};
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.7 },
+  visible: (d = 0) => ({ opacity: 1, scale: 1, transition: { duration: 0.5, delay: d, type: 'spring', stiffness: 200 } }),
+};
 
 // ─────────────────────────────────────────────────────────────
 const Hero = () => {
@@ -135,6 +147,21 @@ const Hero = () => {
           position: 'absolute', inset: 0,
           background: 'linear-gradient(115deg, rgba(4,14,8,0.95) 0%, rgba(8,30,18,0.86) 42%, rgba(6,18,12,0.45) 100%)',
         }} />
+
+        {/* Shimmer scan line */}
+        <motion.div
+          style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 1, overflow: 'hidden' }}
+          initial={false}
+        >
+          <motion.div
+            style={{
+              position: 'absolute', left: 0, right: 0, height: 2,
+              background: 'linear-gradient(90deg, transparent, rgba(244,165,34,0.35), transparent)',
+            }}
+            animate={{ top: ['-2%', '102%'] }}
+            transition={{ duration: 4, repeat: Infinity, ease: 'linear', repeatDelay: 2 }}
+          />
+        </motion.div>
 
         {/* Morphing green blob */}
         <Box sx={{
@@ -239,17 +266,23 @@ const Hero = () => {
           <Box sx={{ maxWidth: { xs: '100%', md: 700, lg: 760 }, color: 'white' }}>
 
             {/* Badge pill */}
-            <motion.div custom={0} initial="hidden" animate="visible" variants={fadeUp}>
-              <Box sx={{
-                display: 'inline-flex', alignItems: 'center', gap: 1,
-                bgcolor: 'rgba(244,165,34,0.12)', border: '1px solid rgba(244,165,34,0.35)',
-                borderRadius: 30, px: 2.5, py: 0.8, mb: 3.5,
-              }}>
-                <GraduationCap size={13} color={ORANGE} />
-                <Typography sx={{ color: ORANGE, fontWeight: 700, letterSpacing: 1.8, textTransform: 'uppercase', fontSize: '0.68rem' }}>
-                  Your Gateway to Global Education
-                </Typography>
-              </Box>
+            <motion.div custom={0} initial="hidden" animate="visible" variants={scaleIn}>
+              <motion.div
+                animate={{ boxShadow: ['0 0 0px rgba(244,165,34,0)', '0 0 18px rgba(244,165,34,0.45)', '0 0 0px rgba(244,165,34,0)'] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+                style={{ display: 'inline-block', borderRadius: 30, marginBottom: '28px' }}
+              >
+                <Box sx={{
+                  display: 'inline-flex', alignItems: 'center', gap: 1,
+                  bgcolor: 'rgba(244,165,34,0.12)', border: '1px solid rgba(244,165,34,0.35)',
+                  borderRadius: 30, px: 2.5, py: 0.8,
+                }}>
+                  <GraduationCap size={13} color={ORANGE} />
+                  <Typography sx={{ color: ORANGE, fontWeight: 700, letterSpacing: 1.8, textTransform: 'uppercase', fontSize: '0.68rem' }}>
+                    Your Gateway to Global Education
+                  </Typography>
+                </Box>
+              </motion.div>
             </motion.div>
 
             {/* "Study in" line */}
@@ -284,22 +317,41 @@ const Hero = () => {
               </Typography>
             </motion.div>
 
-            {/* Trust ticks */}
-            <motion.div custom={0.4} initial="hidden" animate="visible" variants={fadeUp}>
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2.5, mb: 4.5 }}>
-                {['Free Consultation', 'Certified Counselors', '98% Visa Success'].map(t => (
-                  <Box key={t} sx={{ display: 'flex', alignItems: 'center', gap: 0.7 }}>
-                    <CheckCircle size={14} color={ORANGE} />
+            {/* Trust ticks — staggered */}
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2.5, mb: 4.5 }}>
+              {['Free Consultation', 'Certified Counselors', '98% Visa Success'].map((t, i) => (
+                <motion.div
+                  key={t}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.5 + i * 0.15, duration: 0.5, ease: 'easeOut' }}
+                >
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.7 }}>
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 0.55 + i * 0.15, type: 'spring', stiffness: 300 }}
+                    >
+                      <CheckCircle size={14} color={ORANGE} />
+                    </motion.div>
                     <Typography sx={{ color: 'rgba(255,255,255,0.78)', fontSize: '0.82rem', fontWeight: 500 }}>{t}</Typography>
                   </Box>
-                ))}
-              </Box>
-            </motion.div>
+                </motion.div>
+              ))}
+            </Box>
 
             {/* CTA buttons */}
-            <motion.div custom={0.5} initial="hidden" animate="visible" variants={fadeUp}>
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.72, duration: 0.6, ease: 'easeOut' }}
+            >
               <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-                <motion.div whileHover={{ y: -3 }} whileTap={{ scale: 0.97 }}>
+                <motion.div
+                  whileHover={{ y: -5, scale: 1.04 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: 'spring', stiffness: 350, damping: 18 }}
+                >
                   <Button
                     variant="contained" size="large"
                     sx={{
@@ -307,26 +359,51 @@ const Hero = () => {
                       px: 4, py: 1.8, borderRadius: 30,
                       fontWeight: 800, fontSize: '1rem',
                       boxShadow: '0 8px 25px rgba(244,165,34,0.4)',
-                      '&:hover': { bgcolor: '#ffb732', boxShadow: '0 12px 30px rgba(244,165,34,0.6)' },
+                      transition: 'box-shadow 0.3s',
+                      '&:hover': { bgcolor: '#ffb732', boxShadow: '0 18px 40px rgba(244,165,34,0.65)' },
                     }}
                   >
                     Start Your Application
                   </Button>
                 </motion.div>
-                <motion.div whileHover={{ y: -3 }} whileTap={{ scale: 0.97 }}>
+                <motion.div
+                  whileHover={{ y: -5, scale: 1.04 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: 'spring', stiffness: 350, damping: 18 }}
+                >
                   <Button
                     variant="outlined" size="large"
                     sx={{
-                      color: 'white', borderColor: 'rgba(255,255,255,0.3)',
+                      color: 'white', borderColor: 'rgba(255,255,255,0.35)',
                       px: 4, py: 1.8, borderRadius: 30,
                       fontWeight: 700, fontSize: '0.95rem',
                       backdropFilter: 'blur(10px)',
-                      '&:hover': { borderColor: ORANGE, bgcolor: 'rgba(244,165,34,0.08)', color: ORANGE },
+                      transition: 'all 0.3s',
+                      '&:hover': { borderColor: ORANGE, bgcolor: 'rgba(244,165,34,0.1)', color: ORANGE },
                     }}
                   >
                     Explore Destinations
                   </Button>
                 </motion.div>
+              </Box>
+            </motion.div>
+
+            {/* Scroll indicator */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.4, duration: 0.8 }}
+              style={{ marginTop: 36 }}
+            >
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                <Box sx={{ position: 'relative', width: 28, height: 44, borderRadius: 14, border: '2px solid rgba(255,255,255,0.3)', display: 'flex', justifyContent: 'center', pt: '6px' }}>
+                  <motion.div
+                    style={{ width: 4, height: 8, borderRadius: 2, background: ORANGE }}
+                    animate={{ y: [0, 14, 0], opacity: [1, 0.3, 1] }}
+                    transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+                  />
+                </Box>
+                <Typography sx={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.72rem', letterSpacing: 1.5, textTransform: 'uppercase' }}>Scroll to explore</Typography>
               </Box>
             </motion.div>
           </Box>
