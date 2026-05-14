@@ -50,18 +50,32 @@ function App() {
       <Header />
       <main>
         <Hero />
-        <React.Suspense fallback={<div style={{ minHeight: '50vh' }}></div>}>
+        <React.Suspense fallback={<div style={{ minHeight: '120px' }} />}>
           <Partners />
+        </React.Suspense>
+        <React.Suspense fallback={<div style={{ minHeight: '500px' }} />}>
           <Features />
+        </React.Suspense>
+        <React.Suspense fallback={<div style={{ minHeight: '600px' }} />}>
           <WhoWeAre />
+        </React.Suspense>
+        <React.Suspense fallback={<div style={{ minHeight: '700px' }} />}>
           <Destinations />
+        </React.Suspense>
+        <React.Suspense fallback={<div style={{ minHeight: '600px' }} />}>
           <Events />
+        </React.Suspense>
+        <React.Suspense fallback={<div style={{ minHeight: '500px' }} />}>
           <News />
+        </React.Suspense>
+        <React.Suspense fallback={<div style={{ minHeight: '500px' }} />}>
           <Gallery />
+        </React.Suspense>
+        <React.Suspense fallback={<div style={{ minHeight: '600px' }} />}>
           <Contact />
         </React.Suspense>
       </main>
-      <React.Suspense fallback={null}>
+      <React.Suspense fallback={<div style={{ minHeight: '300px' }} />}>
         <Footer />
       </React.Suspense>
       <ScrollToTopButton />

@@ -7,40 +7,40 @@ import {
 } from 'lucide-react';
 
 // ── Accent colour ────────────────────────────────────────────
-const GREEN  = '#125A41';
+const GREEN = '#125A41';
 const ORANGE = '#F4A522';   // restored original orange
-const DARK   = '#06120C';
+const DARK = '#06120C';
 
 // ── Destinations — NO flag emojis (breaks on Windows) ───────
 const DESTINATIONS = ['United Kingdom', 'Canada', 'Australia', 'USA', 'New Zealand'];
-const DEST_FLAGS   = ['🇬🇧', '🇨🇦', '🇦🇺', '🇺🇸', '🇳🇿']; // only for badge icons on right
+const DEST_FLAGS = ['🇬🇧', '🇨🇦', '🇦🇺', '🇺🇸', '🇳🇿']; // only for badge icons on right
 
 // ── Stats ────────────────────────────────────────────────────
 const STATS = [
-  { end: 200, suffix: '+', label: 'Students Placed',      icon: <Users size={17}/> },
-  { end: 98,  suffix: '%', label: 'Visa Success Rate',    icon: <TrendingUp size={17}/> },
-  { end: 200, suffix: '+', label: 'Partner Universities', icon: <BookOpen size={17}/> },
-  { end: 5,   suffix: '+', label: 'Years Experience',     icon: <Star size={17}/> },
+  { end: 200, suffix: '+', label: 'Students Placed', icon: <Users size={17} /> },
+  { end: 98, suffix: '%', label: 'Visa Success Rate', icon: <TrendingUp size={17} /> },
+  { end: 200, suffix: '+', label: 'Partner Universities', icon: <BookOpen size={17} /> },
+  { end: 5, suffix: '+', label: 'Years Experience', icon: <Star size={17} /> },
 ];
 
 // ── Feature cards ────────────────────────────────────────────
 const FEATURES = [
-  { icon: <Users size={24}/>,         title: 'Expert Counselling',     desc: 'Certified overseas education experts guide you at every step.',  accent: GREEN },
-  { icon: <BookOpen size={24}/>,      title: 'University Admissions',  desc: 'Secure your place at top-ranked universities worldwide.',        accent: ORANGE },
-  { icon: <GraduationCap size={24}/>, title: 'Scholarship Assistance', desc: 'Maximum financial aid guidance for your dream program.',          accent: GREEN },
-  { icon: <FileText size={24}/>,      title: 'Visa Processing',        desc: 'Hassle-free student visa application & coaching support.',        accent: ORANGE },
+  { icon: <Users size={24} />, title: 'Expert Counselling', desc: 'Certified overseas education experts guide you at every step.', accent: GREEN },
+  { icon: <BookOpen size={24} />, title: 'University Admissions', desc: 'Secure your place at top-ranked universities worldwide.', accent: ORANGE },
+  { icon: <GraduationCap size={24} />, title: 'Scholarship Assistance', desc: 'Maximum financial aid guidance for your dream program.', accent: GREEN },
+  { icon: <FileText size={24} />, title: 'Visa Processing', desc: 'Hassle-free student visa application & coaching support.', accent: ORANGE },
 ];
 
 // ── Particles ────────────────────────────────────────────────
 const PARTICLES = [
-  { w:7,  h:7,  top:'14%', left:'7%',  dur:7,  delay:0,   col: `rgba(244,165,34,0.55)`  },
-  { w:5,  h:5,  top:'28%', left:'20%', dur:9,  delay:1.2, col: `rgba(18,90,65,0.6)`     },
-  { w:9,  h:9,  top:'62%', left:'4%',  dur:8,  delay:0.5, col: `rgba(244,165,34,0.4)`   },
-  { w:6,  h:6,  top:'78%', left:'25%', dur:10, delay:2,   col: `rgba(255,255,255,0.22)` },
-  { w:4,  h:4,  top:'42%', left:'32%', dur:6,  delay:0.8, col: `rgba(244,165,34,0.35)`  },
-  { w:8,  h:8,  top:'20%', left:'85%', dur:7,  delay:0.3, col: `rgba(18,90,65,0.5)`     },
-  { w:5,  h:5,  top:'52%', left:'90%', dur:9,  delay:1.8, col: `rgba(244,165,34,0.45)`  },
-  { w:6,  h:6,  top:'72%', left:'78%', dur:7,  delay:0.9, col: `rgba(255,255,255,0.18)` },
+  { w: 7, h: 7, top: '14%', left: '7%', dur: 7, delay: 0, col: `rgba(244,165,34,0.55)` },
+  { w: 5, h: 5, top: '28%', left: '20%', dur: 9, delay: 1.2, col: `rgba(18,90,65,0.6)` },
+  { w: 9, h: 9, top: '62%', left: '4%', dur: 8, delay: 0.5, col: `rgba(244,165,34,0.4)` },
+  { w: 6, h: 6, top: '78%', left: '25%', dur: 10, delay: 2, col: `rgba(255,255,255,0.22)` },
+  { w: 4, h: 4, top: '42%', left: '32%', dur: 6, delay: 0.8, col: `rgba(244,165,34,0.35)` },
+  { w: 8, h: 8, top: '20%', left: '85%', dur: 7, delay: 0.3, col: `rgba(18,90,65,0.5)` },
+  { w: 5, h: 5, top: '52%', left: '90%', dur: 9, delay: 1.8, col: `rgba(244,165,34,0.45)` },
+  { w: 6, h: 6, top: '72%', left: '78%', dur: 7, delay: 0.9, col: `rgba(255,255,255,0.18)` },
 ];
 
 // ── Animated counter ─────────────────────────────────────────
@@ -64,9 +64,9 @@ function AnimatedCounter({ end, suffix, started }) {
 
 // ── Typewriter ───────────────────────────────────────────────
 function Typewriter() {
-  const [idx, setIdx]       = useState(0);
-  const [txt, setTxt]       = useState('');
-  const [deleting, setDel]  = useState(false);
+  const [idx, setIdx] = useState(0);
+  const [txt, setTxt] = useState('');
+  const [deleting, setDel] = useState(false);
 
   useEffect(() => {
     const full = DESTINATIONS[idx];
@@ -91,7 +91,7 @@ function Typewriter() {
         display: 'inline-block', width: 3, height: '0.82em',
         bgcolor: ORANGE, ml: '3px', verticalAlign: 'middle',
         borderRadius: 1, animation: 'blink-caret 0.85s step-end infinite',
-      }}/>
+      }} />
     </Box>
   );
 }
@@ -99,7 +99,7 @@ function Typewriter() {
 // ─────────────────────────────────────────────────────────────
 const fadeUp = {
   hidden: { opacity: 0, y: 36 },
-  visible: (d = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.65, delay: d, ease: [0.25,0.46,0.45,0.94] } }),
+  visible: (d = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.65, delay: d, ease: [0.25, 0.46, 0.45, 0.94] } }),
 };
 const fadeRight = {
   hidden: { opacity: 0, x: 48 },
@@ -108,21 +108,21 @@ const fadeRight = {
 
 // ─────────────────────────────────────────────────────────────
 const Hero = () => {
-  const statsRef  = useRef(null);
+  const statsRef = useRef(null);
   const statsView = useInView(statsRef, { once: true, amount: 0.4 });
 
   return (
     <Box id="home">
       {/* Visually hidden h1 for SEO */}
       <Typography component="h1" sx={{ position: 'absolute', width: 1, height: 1, padding: 0, margin: -1, overflow: 'hidden', clip: 'rect(0, 0, 0, 0)', whiteSpace: 'nowrap', border: 0 }}>
-        EduGlobeLanka Consultancy - Sri Lanka's #1 Student Visa Experts
+        EduGlobeLanka Consultancy - The Best Student Visa Consultancy in Sri Lanka & Jaffna
       </Typography>
 
       {/* ════════════════ HERO ════════════════ */}
       <Box sx={{
         position: 'relative',
-        minHeight: '100vh',
-        backgroundImage: 'url(/assets/images/hero_bg.webp)',
+        minHeight: { xs: 'calc(100vh - 160px)', md: 'calc(100vh - 140px)' },
+        backgroundImage: 'url(/assets/images/hero2.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center 25%',
         display: 'flex',
@@ -134,7 +134,7 @@ const Hero = () => {
         <Box sx={{
           position: 'absolute', inset: 0,
           background: 'linear-gradient(115deg, rgba(4,14,8,0.95) 0%, rgba(8,30,18,0.86) 42%, rgba(6,18,12,0.45) 100%)',
-        }}/>
+        }} />
 
         {/* Morphing green blob */}
         <Box sx={{
@@ -142,7 +142,7 @@ const Hero = () => {
           width: 600, height: 600, pointerEvents: 'none',
           background: 'radial-gradient(circle, rgba(18,90,65,0.28) 0%, transparent 70%)',
           animation: 'blob-morph 12s ease-in-out infinite',
-        }}/>
+        }} />
 
         {/* Morphing blue blob */}
         <Box sx={{
@@ -150,7 +150,7 @@ const Hero = () => {
           width: 480, height: 480, pointerEvents: 'none',
           background: 'radial-gradient(circle, rgba(56,189,248,0.10) 0%, transparent 70%)',
           animation: 'blob-morph 16s ease-in-out infinite reverse',
-        }}/>
+        }} />
 
         {/* Particles */}
         {PARTICLES.map((p, i) => (
@@ -160,7 +160,7 @@ const Hero = () => {
             background: p.col,
             boxShadow: `0 0 12px ${p.col}`,
             animation: `particle-drift ${p.dur}s ease-in-out ${p.delay}s infinite`,
-          }}/>
+          }} />
         ))}
 
         {/* ── Right destination badges ── */}
@@ -189,7 +189,7 @@ const Hero = () => {
                 transition: 'all 0.3s',
                 '&:hover': { bgcolor: 'rgba(244,165,34,0.15)', borderColor: 'rgba(244,165,34,0.45)' },
               }}>
-                <MapPin size={13} color={ORANGE}/>
+                <MapPin size={13} color={ORANGE} />
                 {name}
               </Box>
             </motion.div>
@@ -219,11 +219,11 @@ const Hero = () => {
                   animation: 'pulse-ring 2s ease-out infinite',
                 },
               }}>
-                <Star size={20} fill={ORANGE} color={ORANGE}/>
+                <Star size={20} fill={ORANGE} color={ORANGE} />
               </Box>
               <Box>
-                <Typography sx={{ color: 'white', fontWeight: 700, fontSize: '0.88rem', lineHeight: 1.2 }}>#1 Rated Agency</Typography>
-                <Typography sx={{ color: 'rgba(255,255,255,0.58)', fontSize: '0.70rem' }}>Sri Lanka Student Visa</Typography>
+                <Typography sx={{ color: 'white', fontWeight: 700, fontSize: '0.88rem', lineHeight: 1.2 }}>#1 Rated Consultancy</Typography>
+                <Typography sx={{ color: 'rgba(255,255,255,0.58)', fontSize: '0.70rem' }}>Sri Lanka & Jaffna</Typography>
               </Box>
             </Box>
           </motion.div>
@@ -245,7 +245,7 @@ const Hero = () => {
                 bgcolor: 'rgba(244,165,34,0.12)', border: '1px solid rgba(244,165,34,0.35)',
                 borderRadius: 30, px: 2.5, py: 0.8, mb: 3.5,
               }}>
-                <GraduationCap size={13} color={ORANGE}/>
+                <GraduationCap size={13} color={ORANGE} />
                 <Typography sx={{ color: ORANGE, fontWeight: 700, letterSpacing: 1.8, textTransform: 'uppercase', fontSize: '0.68rem' }}>
                   Your Gateway to Global Education
                 </Typography>
@@ -269,7 +269,7 @@ const Hero = () => {
                 lineHeight: 1.06, fontWeight: 900, letterSpacing: '-2px',
                 mb: 3, minHeight: { xs: '3.8rem', md: '5.8rem', lg: '6.6rem' },
               }}>
-                <Typewriter/>
+                <Typewriter />
               </Typography>
             </motion.div>
 
@@ -279,7 +279,7 @@ const Hero = () => {
                 color: 'rgba(255,255,255,0.80)', lineHeight: 1.85,
                 fontSize: { xs: '0.97rem', md: '1.08rem' }, maxWidth: 500, mb: 2.5,
               }}>
-                Sri Lanka's most trusted student visa consultancy — turning your
+                The best student visa consultancy in Sri Lanka and Jaffna — turning your
                 international education dreams into reality.
               </Typography>
             </motion.div>
@@ -289,7 +289,7 @@ const Hero = () => {
               <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2.5, mb: 4.5 }}>
                 {['Free Consultation', 'Certified Counselors', '98% Visa Success'].map(t => (
                   <Box key={t} sx={{ display: 'flex', alignItems: 'center', gap: 0.7 }}>
-                    <CheckCircle size={14} color={ORANGE}/>
+                    <CheckCircle size={14} color={ORANGE} />
                     <Typography sx={{ color: 'rgba(255,255,255,0.78)', fontSize: '0.82rem', fontWeight: 500 }}>{t}</Typography>
                   </Box>
                 ))}
@@ -331,53 +331,56 @@ const Hero = () => {
             </motion.div>
           </Box>
         </Container>
-
-        {/* ── Stats bar ── */}
-        <Box ref={statsRef} sx={{
-          position: 'relative', zIndex: 2,
-          borderTop: '1px solid rgba(255,255,255,0.08)',
-          bgcolor: 'rgba(4,12,8,0.92)', // solid semi-transparent, no blur
-        }}>
-          <Container maxWidth="xl">
-            <Box sx={{
-              display: 'grid',
-              gridTemplateColumns: { xs: 'repeat(2,1fr)', sm: 'repeat(4,1fr)' },
-              py: { xs: 3.5, md: 4.5 },
-            }}>
-              {STATS.map((s, i) => (
-                <motion.div
-                  key={s.label}
-                  custom={i * 0.1}
-                  initial="hidden" animate={statsView ? 'visible' : 'hidden'}
-                  variants={fadeUp}
-                >
-                  <Box sx={{
-                    textAlign: 'center', px: 2, position: 'relative',
-                    '&:not(:last-child)::after': {
-                      content: '""', position: 'absolute', right: 0, top: '15%',
-                      height: '70%', width: '1px', bgcolor: 'rgba(255,255,255,0.09)',
-                      display: { xs: 'none', sm: 'block' },
-                    },
-                  }}>
-                    <Box sx={{ display: 'flex', justifyContent: 'center', mb: 0.8, color: 'rgba(244,165,34,0.65)' }}>
-                      {s.icon}
-                    </Box>
-                    <Typography sx={{
-                      fontFamily: '"Outfit",sans-serif', fontWeight: 900,
-                      fontSize: { xs: '1.9rem', md: '2.3rem' }, lineHeight: 1, color: ORANGE,
-                    }}>
-                      <AnimatedCounter end={s.end} suffix={s.suffix} started={statsView}/>
-                    </Typography>
-                    <Typography sx={{ color: 'rgba(255,255,255,0.58)', fontSize: '0.75rem', fontWeight: 500, mt: 0.5 }}>
-                      {s.label}
-                    </Typography>
-                  </Box>
-                </motion.div>
-              ))}
-            </Box>
-          </Container>
-        </Box>
       </Box>
+
+
+      {/* ── Stats bar ── */}
+      <Box ref={statsRef} sx={{
+        position: 'relative', zIndex: 2,
+        bgcolor: '#06120C',
+        borderTop: '1px solid rgba(255,255,255,0.08)',
+      }}>
+        <Container maxWidth="xl">
+          <Box sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: 'repeat(2,1fr)', sm: 'repeat(4,1fr)' },
+            py: { xs: 3.5, md: 4.5 },
+          }}>
+            {STATS.map((s, i) => (
+              <motion.div
+                key={s.label}
+                custom={i * 0.1}
+                initial="hidden" animate={statsView ? 'visible' : 'hidden'}
+                variants={fadeUp}
+              >
+                <Box sx={{
+                  textAlign: 'center', px: 2, position: 'relative',
+                  '&:not(:last-child)::after': {
+                    content: '""', position: 'absolute', right: 0, top: '15%',
+                    height: '70%', width: '1px', bgcolor: 'rgba(255,255,255,0.09)',
+                    display: { xs: 'none', sm: 'block' },
+                  },
+                }}>
+                  <Box sx={{ display: 'flex', justifyContent: 'center', mb: 0.8, color: 'rgba(244,165,34,0.65)' }}>
+                    {s.icon}
+                  </Box>
+                  <Typography sx={{
+                    fontFamily: '"Outfit",sans-serif', fontWeight: 900,
+                    fontSize: { xs: '1.9rem', md: '2.3rem' }, lineHeight: 1, color: ORANGE,
+                  }}>
+                    <AnimatedCounter end={s.end} suffix={s.suffix} started={statsView} />
+                  </Typography>
+                  <Typography sx={{ color: 'rgba(255,255,255,0.58)', fontSize: '0.75rem', fontWeight: 500, mt: 0.5 }}>
+                    {s.label}
+                  </Typography>
+                </Box>
+              </motion.div>
+            ))}
+          </Box>
+        </Container>
+      </Box>
+
+
 
       {/* ════════════════ FEATURE CARDS ════════════════ */}
       <Box sx={{ bgcolor: '#f2f6f4', py: { xs: 6, md: 8 } }}>
@@ -415,7 +418,7 @@ const Hero = () => {
                     position: 'absolute', bottom: -20, right: -20, width: 90, height: 90,
                     borderRadius: '50%', pointerEvents: 'none',
                     bgcolor: i % 2 === 0 ? 'rgba(18,90,65,0.04)' : 'rgba(244,165,34,0.05)',
-                  }}/>
+                  }} />
                   {/* icon */}
                   <Box sx={{
                     width: 54, height: 54, borderRadius: 2.5, mb: 2.5,

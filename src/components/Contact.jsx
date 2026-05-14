@@ -6,7 +6,8 @@ import { motion } from 'framer-motion';
 const contactInfo = [
   { icon: <Phone size={20} />, label: 'Phone',  lines: ['+44 7401 148372'] },
   { icon: <Mail size={20} />,  label: 'Email',  lines: ['Eduglobelankaconsultancy@gmail.com'] },
-  { icon: <MapPin size={20} />,label: 'Office', lines: ['No. 45, Duplication Road,', 'Colombo 03, Sri Lanka'] },
+  { icon: <MapPin size={20} />,label: 'Colombo Office', lines: ['No. 45, Duplication Road,', 'Colombo 03, Sri Lanka'] },
+  { icon: <MapPin size={20} />,label: 'Jaffna Operations', lines: ['Serving students across', 'Jaffna & Northern Province'] },
   { icon: <Clock size={20} />, label: 'Hours',  lines: ['Mon – Fri: 9:00 AM – 6:00 PM', 'Sat: 9:00 AM – 2:00 PM'] },
 ];
 

@@ -167,18 +167,18 @@ const Destinations = () => {
         </Box>
 
         {/* Cards Grid */}
-        <Grid container spacing={3} justifyContent="center">
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 3 }}>
           {destinations.map((dest, i) => (
-            <Grid item key={dest.name} xs={dest.span.xs} sm={dest.span.sm} md={dest.span.md}>
+            <Box key={dest.name} sx={{ width: { xs: '100%', sm: 'calc(50% - 12px)', md: 'calc(33.333% - 16px)' } }}>
               <DestCard
                 dest={dest}
                 hovered={hovered === i}
                 onEnter={() => setHovered(i)}
                 onLeave={() => setHovered(null)}
               />
-            </Grid>
+            </Box>
           ))}
-        </Grid>
+        </Box>
 
         {/* View All CTA */}
         <Box sx={{ textAlign: 'center', mt: 6 }}>

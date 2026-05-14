@@ -19,10 +19,10 @@ async function optimizeImages() {
 
         // Get metadata to optionally resize
         const metadata = await image.metadata();
-        if (metadata.width > 1200 && file !== 'hero_bg.png') {
-           image = image.resize(1200);
-        } else if (file === 'hero_bg.png' && metadata.width > 1920) {
-           image = image.resize(1920); // Hero can be a bit larger, but not huge
+        if (metadata.width > 1200 && file !== 'hero2.png') {
+          image = image.resize(1200);
+        } else if (file === 'hero2.png' && metadata.width > 1920) {
+          image = image.resize(1920); // Hero can be a bit larger, but not huge
         }
 
         await image.webp({ quality: 75 }).toFile(newFilePath);

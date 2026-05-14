@@ -82,7 +82,7 @@ const Footer = () => {
                 </Box>
               </Box>
               <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.55)', lineHeight: 1.9, mb: 3.5, maxWidth: 270 }}>
-                Sri Lanka's trusted overseas education consultancy — turning your global study dream into a world-class reality since 2014.
+                The best student visa consultancy in Sri Lanka and Jaffna — turning your global study dream into a world-class reality since 2014.
               </Typography>
               <Box sx={{ display: 'flex', gap: 1 }}>
                 {[FB, IG, TW, YT].map((Icon, i) => (
