@@ -32,7 +32,19 @@ const Contact = () => {
     setLoading(true);
     setError(null);
     try {
-      // Web3Forms — free, no activation needed. Get your key at web3forms.com
+      // 1️⃣ Resolve submitter's IP & country (best-effort — fails silently)
+      let submitterIp      = 'Unknown';
+      let submitterCountry = 'Unknown';
+      try {
+        const geoRes  = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(5000) });
+        const geoJson = await geoRes.json();
+        submitterIp      = geoJson.ip      || 'Unknown';
+        submitterCountry = geoJson.country_name || geoJson.country || 'Unknown';
+      } catch (geoErr) {
+        console.warn('[GeoIP] lookup failed (ignored):', geoErr);
+      }
+
+      // 2️⃣ Submit form via Web3Forms
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
@@ -45,6 +57,8 @@ const Contact = () => {
           Phone: form.phone || '—',
           'Preferred Destination': form.destination || '—',
           Message: form.message,
+          'Submitter IP': submitterIp,
+          'Submitter Country': submitterCountry,
         }),
       });
 
