@@ -32,13 +32,14 @@ const Contact = () => {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch('https://formsubmit.co/ajax/Eduglobelankaconsultancy@gmail.com', {
+      // Web3Forms — free, no activation needed. Get your key at web3forms.com
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          _subject: `New Enquiry from ${form.name} — EduGlobe Lanka`,
-          _captcha: 'false',
-          _template: 'table',
+          access_key: '2bc10ea7-5fbb-45c9-a453-26dbad56aba9',
+          subject: `New Enquiry from ${form.name} — EduGlobe Lanka`,
+          from_name: 'EduGlobe Lanka Website',
           Name: form.name,
           Email: form.email,
           Phone: form.phone || '—',
@@ -47,17 +48,18 @@ const Contact = () => {
         }),
       });
 
-      if (res.ok) {
+      const json = await res.json().catch(() => ({}));
+      console.log('[Web3Forms] response:', res.status, json);
+
+      if (res.ok && json.success) {
         setSubmitted(true);
         setForm({ name: '', email: '', phone: '', destination: '', message: '' });
-      } else if (res.status === 500 || res.status === 403) {
-        // FormSubmit sends a confirmation email on the FIRST submission.
-        // The endpoint stays inactive (returns 500) until the user clicks "Confirm".
-        setError('activation');
       } else {
+        console.error('[Web3Forms] error:', json);
         setError('network');
       }
-    } catch {
+    } catch (err) {
+      console.error('[Web3Forms] fetch error:', err);
       setError('network');
     } finally {
       setLoading(false);
