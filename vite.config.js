@@ -7,11 +7,19 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vendor-react':   ['react', 'react-dom'],
-          'vendor-mui':     ['@mui/material', '@mui/system', '@emotion/react', '@emotion/styled'],
-          'vendor-framer':  ['framer-motion'],
-          'vendor-lucide':  ['lucide-react'],
+        manualChunks: (id) => {
+          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
+            return 'vendor-react';
+          }
+          if (id.includes('node_modules/@mui') || id.includes('node_modules/@emotion')) {
+            return 'vendor-mui';
+          }
+          if (id.includes('node_modules/framer-motion')) {
+            return 'vendor-framer';
+          }
+          if (id.includes('node_modules/lucide-react')) {
+            return 'vendor-lucide';
+          }
         },
       },
     },
