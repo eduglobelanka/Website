@@ -14,6 +14,7 @@ const News = React.lazy(() => import('./components/News'));
 const Gallery = React.lazy(() => import('./components/Gallery'));
 const Contact = React.lazy(() => import('./components/Contact'));
 const Footer = React.lazy(() => import('./components/Footer'));
+import WhatsAppWidget from './components/WhatsAppWidget';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 function ScrollToTopButton() {
@@ -27,7 +28,7 @@ function ScrollToTopButton() {
         aria-label="scroll back to top"
         sx={{
           position: 'fixed',
-          bottom: 24,
+          bottom: 96,
           right: 24,
           bgcolor: theme.palette.primary.main,
           color: 'white',
@@ -79,6 +80,7 @@ function App() {
         <Footer />
       </React.Suspense>
       <ScrollToTopButton />
+      <WhatsAppWidget />
       <Analytics />
       <SpeedInsights />
     </div>
