@@ -30,32 +30,61 @@ const YT = () => (
   </svg>
 );
 
-const quickLinks = ['Home', 'About Us', 'Services', 'Study Destinations', 'Events & Seminars', 'Gallery', 'Contact Us'];
-const destLinks = ['Study in UK', 'Study in Canada', 'Study in Australia', 'Study in USA', 'Study in New Zealand', 'Scholarships'];
-const serviceLinks = ['University Selection', 'Visa Assistance', 'IELTS Coaching', 'SOP & LOR Writing', 'Scholarship Guidance', 'Pre-Departure Briefing'];
+const quickLinks = [
+  { label: 'Home',               href: '/', hash: 'home'         },
+  { label: 'About Us',           href: '/', hash: 'about'        },
+  { label: 'Services',           href: '/', hash: 'services'     },
+  { label: 'Study Destinations', href: '/', hash: 'destinations' },
+  { label: 'Events & Seminars',  href: '/', hash: 'events'       },
+  { label: 'Gallery',            href: '/', hash: 'gallery'      },
+  { label: 'Contact Us',         href: '/', hash: 'contact'      },
+];
+const destLinks = [
+  { label: 'Study in UK',          href: '/', hash: 'destinations' },
+  { label: 'Study in Canada',      href: '/', hash: 'destinations' },
+  { label: 'Study in Australia',   href: '/', hash: 'destinations' },
+  { label: 'Study in USA',         href: '/', hash: 'destinations' },
+  { label: 'Study in New Zealand', href: '/', hash: 'destinations' },
+  { label: 'Scholarships',         href: '/', hash: 'contact'      },
+];
+const serviceLinks = [
+  { label: 'University Selection',  href: '/', hash: 'services' },
+  { label: 'Visa Assistance',       href: '/', hash: 'services' },
+  { label: 'IELTS Coaching',        href: '/', hash: 'services' },
+  { label: 'SOP & LOR Writing',     href: '/', hash: 'services' },
+  { label: 'Scholarship Guidance',  href: '/', hash: 'services' },
+  { label: 'Pre-Departure Briefing',href: '/', hash: 'services' },
+];
 
 const FooterLinks = ({ items }) => {
-  const theme = useTheme();
+  const handleClick = (e, hash) => {
+    e.preventDefault();
+    const el = document.getElementById(hash);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return (
     <Box component="ul" sx={{ m: 0, p: 0, listStyle: 'none' }}>
-      {items.map((item) => (
-        <Box
-          key={item}
-          component="li"
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 1,
-            mb: 1.4,
-            color: 'rgba(255,255,255,0.58)',
-            cursor: 'pointer',
-            fontSize: '0.87rem',
-            transition: 'color 0.2s ease, gap 0.2s ease',
-            '&:hover': { color: '#F4A522', gap: 1.5 },
-          }}
-        >
-          <ArrowRight size={11} style={{ flexShrink: 0 }} />
-          {item}
+      {items.map(({ label, href, hash }) => (
+        <Box key={label} component="li" sx={{ mb: 1.4 }}>
+          <Box
+            component="a"
+            href={href}
+            onClick={(e) => handleClick(e, hash)}
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 1,
+              color: 'rgba(255,255,255,0.58)',
+              fontSize: '0.87rem',
+              textDecoration: 'none',
+              transition: 'color 0.2s ease, gap 0.2s ease',
+              '&:hover': { color: '#F4A522', gap: 1.5 },
+            }}
+          >
+            <ArrowRight size={11} style={{ flexShrink: 0 }} />
+            {label}
+          </Box>
         </Box>
       ))}
     </Box>
