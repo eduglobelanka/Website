@@ -1,22 +1,26 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline, Fab, Zoom, useScrollTrigger } from '@mui/material';
 import { ChevronUp } from 'lucide-react';
 import theme from './theme';
 import Header from './components/Header';
 import Hero from './components/Hero';
-const Partners = React.lazy(() => import('./components/Partners'));
-const Features = React.lazy(() => import('./components/Features'));
-const WhoWeAre = React.lazy(() => import('./components/WhoWeAre'));
+import ScholarshipBanner from './components/ScholarshipBanner';
+const Partners     = React.lazy(() => import('./components/Partners'));
+const Features     = React.lazy(() => import('./components/Features'));
+const WhoWeAre     = React.lazy(() => import('./components/WhoWeAre'));
 const Destinations = React.lazy(() => import('./components/Destinations'));
-const Events = React.lazy(() => import('./components/Events'));
-const News = React.lazy(() => import('./components/News'));
-const Gallery = React.lazy(() => import('./components/Gallery'));
-const Contact = React.lazy(() => import('./components/Contact'));
-const Footer = React.lazy(() => import('./components/Footer'));
+// const Events    = React.lazy(() => import('./components/Events')); // temporarily hidden
+const News         = React.lazy(() => import('./components/News'));
+const Gallery      = React.lazy(() => import('./components/Gallery'));
+const Contact      = React.lazy(() => import('./components/Contact'));
+const Footer       = React.lazy(() => import('./components/Footer'));
+const Register     = React.lazy(() => import('./components/Register'));
 import WhatsAppWidget from './components/WhatsAppWidget';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
+
 function ScrollToTopButton() {
   const trigger = useScrollTrigger({ threshold: 400, disableHysteresis: true });
 
@@ -45,12 +49,14 @@ function ScrollToTopButton() {
   );
 }
 
-function App() {
+/* ── Full home page ─────────────────────────────────────────── */
+function HomePage() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', overflowX: 'hidden' }}>
       <Header />
       <main>
         <Hero />
+        <ScholarshipBanner />
         <React.Suspense fallback={<div style={{ minHeight: '120px' }} />}>
           <Partners />
         </React.Suspense>
@@ -63,9 +69,7 @@ function App() {
         <React.Suspense fallback={<div style={{ minHeight: '700px' }} />}>
           <Destinations />
         </React.Suspense>
-        <React.Suspense fallback={<div style={{ minHeight: '600px' }} />}>
-          <Events />
-        </React.Suspense>
+        {/* Events section temporarily hidden */}
         <React.Suspense fallback={<div style={{ minHeight: '500px' }} />}>
           <News />
         </React.Suspense>
@@ -81,10 +85,30 @@ function App() {
       </React.Suspense>
       <ScrollToTopButton />
       <WhatsAppWidget />
-      <Analytics />
-      <SpeedInsights />
     </div>
   );
 }
 
+/* ── App with routing ───────────────────────────────────────── */
+function App() {
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/register"
+          element={
+            <React.Suspense fallback={<div style={{ minHeight: '100vh', background: '#06120C' }} />}>
+              <Register />
+            </React.Suspense>
+          }
+        />
+      </Routes>
+      <Analytics />
+      <SpeedInsights />
+    </>
+  );
+}
+
 export default App;
+

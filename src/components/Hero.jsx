@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Box, Typography, Button, Container } from '@mui/material';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import {
   Users, BookOpen, GraduationCap, FileText,
   ArrowRight, CheckCircle, Star, TrendingUp, MapPin,
@@ -122,6 +123,7 @@ const scaleIn = {
 const Hero = () => {
   const statsRef = useRef(null);
   const statsView = useInView(statsRef, { once: true, amount: 0.4 });
+  const navigate = useNavigate();
 
   return (
     <Box id="home">
@@ -354,6 +356,7 @@ const Hero = () => {
                 >
                   <Button
                     variant="contained" size="large"
+                    onClick={() => navigate('/register')}
                     sx={{
                       bgcolor: ORANGE, color: '#06120C',
                       px: 4, py: 1.8, borderRadius: 30,
@@ -373,6 +376,7 @@ const Hero = () => {
                 >
                   <Button
                     variant="outlined" size="large"
+                    onClick={() => document.getElementById('destinations')?.scrollIntoView({ behavior: 'smooth' })}
                     sx={{
                       color: 'white', borderColor: 'rgba(255,255,255,0.35)',
                       px: 4, py: 1.8, borderRadius: 30,
