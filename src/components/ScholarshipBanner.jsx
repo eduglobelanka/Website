@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Box, Container, Typography, Button, Chip, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Container, Typography, Button, Chip } from '@mui/material';
 import { motion, useInView } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { GraduationCap, Zap, Gift, BadgeCheck, Clock, ArrowRight } from 'lucide-react';
@@ -33,28 +33,30 @@ const fadeUp = {
 };
 
 // ── Single countdown tile ─────────────────────────────────────
-function CountBlock({ value, label, compact }) {
+function CountBlock({ value, label }) {
   return (
-    <Box sx={{ textAlign: 'center', flex: compact ? '1 1 0' : 'none', minWidth: 0 }}>
+    <Box sx={{ textAlign: 'center', flex: '1 1 0', minWidth: 0 }}>
       <Box sx={{
         bgcolor: 'rgba(244,165,34,0.12)',
         border: '1px solid rgba(244,165,34,0.28)',
         borderRadius: 2,
-        px: compact ? 1 : { xs: 1.5, md: 2 },
-        py: compact ? 0.8 : { xs: 0.9, md: 1.4 },
-        mb: 0.5,
+        px: { xs: 1, md: 1.5, lg: 2 },
+        py: { xs: 0.8, md: 1.4, lg: 1.8 },
+        mb: { xs: 0.5, md: 0.7 },
+        minWidth: 0,
       }}>
         <Typography sx={{
           color: ORANGE, fontWeight: 900, lineHeight: 1,
-          fontSize: compact ? { xs: '1.35rem', sm: '1.6rem' } : { xs: '1.5rem', md: '2.1rem' },
+          fontSize: { xs: '1.3rem', md: '2rem', lg: '2.4rem' },
           fontFamily: '"Outfit",sans-serif',
+          whiteSpace: 'nowrap',
         }}>
           {String(value).padStart(2, '0')}
         </Typography>
       </Box>
       <Typography sx={{
         color: 'rgba(255,255,255,0.42)',
-        fontSize: compact ? '0.55rem' : '0.6rem',
+        fontSize: { xs: '0.55rem', md: '0.65rem', lg: '0.7rem' },
         fontWeight: 700, letterSpacing: 1, textTransform: 'uppercase',
       }}>
         {label}
@@ -64,15 +66,17 @@ function CountBlock({ value, label, compact }) {
 }
 
 // ── Separator colon ───────────────────────────────────────────
-function Sep({ compact }) {
+function Sep() {
   return (
     <Typography sx={{
-      color: 'rgba(244,165,34,0.45)',
-      fontSize: compact ? '1.1rem' : { xs: '1.4rem', md: '1.8rem' },
+      color: 'rgba(244,165,34,0.55)',
+      fontSize: { xs: '1.1rem', md: '1.7rem', lg: '2rem' },
       fontWeight: 900,
       alignSelf: 'flex-start',
-      mt: compact ? 0.6 : { xs: 0.7, md: 1 },
+      mt: { xs: 0.5, md: 1.0, lg: 1.2 },
       flexShrink: 0,
+      px: { xs: 0.3, md: 0.5 },
+      lineHeight: 1,
     }}>:</Typography>
   );
 }
@@ -83,9 +87,6 @@ const ScholarshipBanner = () => {
   const ref       = useRef(null);
   const inView    = useInView(ref, { once: true, amount: 0.15 });
   const countdown = useCountdown('2026-09-01T00:00:00');
-  const theme     = useTheme();
-  const isMobile  = useMediaQuery(theme.breakpoints.down('md'));
-
   const perks = [
     { icon: <Gift size={14} />,         text: '£3,000 scholarship' },
     { icon: <BadgeCheck size={14} />,   text: 'University of East London' },
@@ -130,9 +131,10 @@ const ScholarshipBanner = () => {
       <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
         <Box sx={{
           display: 'grid',
-          gridTemplateColumns: { xs: '1fr', lg: '1fr 380px' },
-          gap: { xs: 5, sm: 6, lg: 8 },
+          gridTemplateColumns: { xs: '1fr', lg: '1fr minmax(0, 440px)', xl: '1fr minmax(0, 480px)' },
+          gap: { xs: 5, sm: 6, lg: 6 },
           alignItems: 'center',
+          overflow: 'hidden',
         }}>
 
           {/* ══════════ LEFT — headline + CTA ══════════ */}
@@ -254,22 +256,23 @@ const ScholarshipBanner = () => {
                 </Typography>
               </Box>
 
-              {/* ── Countdown — inline on mobile, uses flex with minWidth:0 ── */}
+              {/* ── Countdown ── */}
               <Box sx={{
                 display: 'flex',
                 alignItems: 'flex-start',
-                gap: { xs: 0.6, sm: 1, md: 1.2 },
+                gap: { xs: 0.5, md: 0.8 },
                 mb: 3,
-                // On very small screens scale down even more
+                width: '100%',
+                overflow: 'hidden',
                 '& *': { boxSizing: 'border-box' },
               }}>
-                <CountBlock value={countdown.days}    label="Days"    compact={isMobile} />
-                <Sep compact={isMobile} />
-                <CountBlock value={countdown.hours}   label="Hours"   compact={isMobile} />
-                <Sep compact={isMobile} />
-                <CountBlock value={countdown.minutes} label="Mins"    compact={isMobile} />
-                <Sep compact={isMobile} />
-                <CountBlock value={countdown.seconds} label="Secs"    compact={isMobile} />
+                <CountBlock value={countdown.days}    label="Days" />
+                <Sep />
+                <CountBlock value={countdown.hours}   label="Hours" />
+                <Sep />
+                <CountBlock value={countdown.minutes} label="Mins" />
+                <Sep />
+                <CountBlock value={countdown.seconds} label="Secs" />
               </Box>
 
               {/* Divider */}
