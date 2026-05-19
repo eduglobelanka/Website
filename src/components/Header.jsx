@@ -4,6 +4,7 @@ import {
   Drawer, List, ListItem, ListItemText, useTheme, useMediaQuery, Divider,
 } from '@mui/material';
 import { Menu as MenuIcon, Phone as PhoneIcon, Mail, GraduationCap, X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 // Custom SVG social icons
 const FacebookIcon = () => (
@@ -30,14 +31,14 @@ const YoutubeIcon = () => (
 );
 
 const navItems = [
-  { label: 'Home', href: '#home' },
-  { label: 'About Us', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Destinations', href: '#destinations' },
-  { label: 'Events', href: '#events' },
-  { label: 'News', href: '#news' },
-  { label: 'Gallery', href: '#gallery' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '/#home' },
+  { label: 'About Us', href: '/#about' },
+  { label: 'Services', href: '/#services-main' },
+  { label: 'Destinations', href: '/#destinations' },
+  { label: 'News', href: '/#news' },
+  { label: 'Gallery', href: '/#gallery' },
+  { label: 'Success Stories', href: '/success-stories' },
+  { label: 'Contact', href: '/#contact' },
 ];
 
 const Header = () => {
@@ -45,6 +46,7 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -54,6 +56,28 @@ const Header = () => {
 
   const scrollToSection = (href) => {
     setMobileOpen(false);
+    
+    // If we're not on the home page and trying to scroll to a hash, navigate home first
+    if (href.startsWith('/#') && window.location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const id = href.replace('/#', '#');
+        document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+      return;
+    }
+
+    if (href.startsWith('/#')) {
+      const id = href.replace('/#', '#');
+      document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+
+    if (href.startsWith('/')) {
+      navigate(href);
+      return;
+    }
+    
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -125,10 +149,10 @@ const Header = () => {
               </Box>
             </Box>
             <Box sx={{ display: 'flex', gap: 2, color: 'rgba(255,255,255,0.8)' }}>
-              <Box sx={{ cursor: 'pointer', '&:hover': { color: theme.palette.secondary.main }, transition: 'color 0.2s' }}><FacebookIcon /></Box>
-              <Box sx={{ cursor: 'pointer', '&:hover': { color: theme.palette.secondary.main }, transition: 'color 0.2s' }}><InstagramIcon /></Box>
-              <Box sx={{ cursor: 'pointer', '&:hover': { color: theme.palette.secondary.main }, transition: 'color 0.2s' }}><TwitterIcon /></Box>
-              <Box sx={{ cursor: 'pointer', '&:hover': { color: theme.palette.secondary.main }, transition: 'color 0.2s' }}><YoutubeIcon /></Box>
+              <Box component="a" href="#" sx={{ color: 'inherit', display: 'flex', '&:hover': { color: theme.palette.secondary.main }, transition: 'color 0.2s' }}><FacebookIcon /></Box>
+              <Box component="a" href="https://www.instagram.com/eduglobelankaconsultancy/" target="_blank" rel="noopener noreferrer" sx={{ color: 'inherit', display: 'flex', '&:hover': { color: theme.palette.secondary.main }, transition: 'color 0.2s' }}><InstagramIcon /></Box>
+              <Box component="a" href="#" sx={{ color: 'inherit', display: 'flex', '&:hover': { color: theme.palette.secondary.main }, transition: 'color 0.2s' }}><TwitterIcon /></Box>
+              <Box component="a" href="#" sx={{ color: 'inherit', display: 'flex', '&:hover': { color: theme.palette.secondary.main }, transition: 'color 0.2s' }}><YoutubeIcon /></Box>
             </Box>
           </Container>
         </Box>

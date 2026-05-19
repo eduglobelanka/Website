@@ -3,9 +3,11 @@ import {
   Box, Container, Grid, Typography, Button, Card, CardMedia, Chip, useTheme,
 } from '@mui/material';
 import { MapPin, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const destinations = [
   {
+    id: 'uk',
     name: 'United Kingdom',
     image: '/assets/images/country_uk.webp',
     badge: 'Heritage & Quality',
@@ -15,6 +17,7 @@ const destinations = [
     span: { xs: 12, sm: 6, md: 4 },
   },
   {
+    id: 'australia',
     name: 'Australia',
     image: '/assets/images/country_aus.webp',
     badge: 'Top Rated',
@@ -42,6 +45,7 @@ const destinations = [
     span: { xs: 12, sm: 6, md: 4 },
   },
   {
+    id: 'canada',
     name: 'Canada',
     image: '/assets/images/country_canada.webp',
     badge: 'Most Popular',
@@ -52,12 +56,13 @@ const destinations = [
   },
 ];
 
-const DestCard = ({ dest, hovered, onEnter, onLeave }) => {
+const DestCard = ({ dest, hovered, onEnter, onLeave, onClick }) => {
   const theme = useTheme();
   return (
     <Card
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}
+      onClick={onClick}
       sx={{
         position: 'relative',
         height: { xs: 260, sm: 300, md: 340 },
@@ -148,7 +153,14 @@ const DestCard = ({ dest, hovered, onEnter, onLeave }) => {
 
 const Destinations = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
   const [hovered, setHovered] = useState(null);
+
+  const handleCardClick = (id) => {
+    if (id) {
+      navigate(`/study-in/${id}`);
+    }
+  };
 
   return (
     <Box id="destinations" sx={{ py: { xs: 8, md: 12 }, bgcolor: '#f5f7f6' }}>
@@ -175,6 +187,7 @@ const Destinations = () => {
                 hovered={hovered === i}
                 onEnter={() => setHovered(i)}
                 onLeave={() => setHovered(null)}
+                onClick={() => handleCardClick(dest.id)}
               />
             </Box>
           ))}

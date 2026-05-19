@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Container, Typography, Button, useTheme } from '@mui/material';
 import { CheckCircle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const checkPoints = [
   'Free initial consultation with certified counselors',
@@ -13,6 +14,7 @@ const checkPoints = [
 
 const WhoWeAre = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
 
   return (
     <Box id="about" sx={{ py: { xs: 8, md: 12 }, bgcolor: '#ffffff', overflow: 'hidden' }}>
@@ -37,7 +39,7 @@ const WhoWeAre = () => {
               backgroundImage: `radial-gradient(${theme.palette.primary.main} 1.8px, transparent 1.8px)`,
               backgroundSize: '20px 20px',
               opacity: 0.15, zIndex: 0, pointerEvents: 'none', borderRadius: 2,
-            }}/>
+            }} />
 
             {/* Main image */}
             <Box sx={{
@@ -52,6 +54,7 @@ const WhoWeAre = () => {
               <img
                 src="/assets/images/student_1.webp"
                 alt="EduGlobeLanka Consultancy Student Success"
+                loading="lazy"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
               />
             </Box>
@@ -70,6 +73,7 @@ const WhoWeAre = () => {
               <img
                 src="/assets/images/student_2.webp"
                 alt="EduGlobeLanka Overseas Education Counselor"
+                loading="lazy"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
               />
             </Box>
@@ -91,7 +95,7 @@ const WhoWeAre = () => {
                 5+
               </Typography>
               <Typography sx={{ fontWeight: 700, color: theme.palette.primary.dark, fontSize: '0.62rem', textTransform: 'uppercase', letterSpacing: 0.5, lineHeight: 1.4, mt: 0.3 }}>
-                Years of<br/>Experience
+                Years of<br />Experience
               </Typography>
             </Box>
           </Box>
@@ -102,7 +106,7 @@ const WhoWeAre = () => {
               ABOUT US
             </Typography>
             <Typography variant="h2" sx={{ color: theme.palette.primary.main, mt: 1, mb: 1.5, fontSize: { xs: '1.9rem', md: '2.6rem' }, lineHeight: 1.22 }}>
-              A Global Leader in<br/>Overseas Education
+              A Global Leader in<br />Overseas Education
             </Typography>
 
             {/* Underline */}
@@ -110,7 +114,7 @@ const WhoWeAre = () => {
               width: 64, height: 4,
               background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
               borderRadius: 2, mb: 3,
-            }}/>
+            }} />
 
             <Typography variant="body1" sx={{ color: theme.palette.text.secondary, mb: 2.5, lineHeight: 1.85, fontSize: '0.97rem' }}>
               EduGlobe Lanka is recognized as the best student visa consultancy in Sri Lanka and Jaffna with over 5 years of hands-on experience. We have successfully guided 200+ students into top universities across the UK, Canada, Australia, USA, and New Zealand.
@@ -128,7 +132,7 @@ const WhoWeAre = () => {
             }}>
               {checkPoints.map((point) => (
                 <Box key={point} sx={{ display: 'flex', alignItems: 'flex-start', gap: 1.5 }}>
-                  <CheckCircle size={17} color={theme.palette.primary.main} style={{ flexShrink: 0, marginTop: 3 }}/>
+                  <CheckCircle size={17} color={theme.palette.primary.main} style={{ flexShrink: 0, marginTop: 3 }} />
                   <Typography variant="body2" sx={{ color: theme.palette.text.secondary, lineHeight: 1.7 }}>
                     {point}
                   </Typography>
@@ -136,7 +140,13 @@ const WhoWeAre = () => {
               ))}
             </Box>
 
-            <Button variant="contained" color="primary" size="large" sx={{ px: 4, py: 1.5, borderRadius: 30, fontWeight: 700 }}>
+            <Button 
+              variant="contained" 
+              color="primary" 
+              size="large" 
+              onClick={() => navigate('/about')}
+              sx={{ px: 4, py: 1.5, borderRadius: 30, fontWeight: 700 }}
+            >
               Read More About Us
             </Button>
           </Box>

@@ -167,28 +167,7 @@ const Contact = () => {
                   <Typography variant="h5" sx={{ color: 'white', fontWeight: 700, mb: 0.8, fontFamily: '"Outfit",sans-serif' }}>Free Consultation Request</Typography>
                   <Typography sx={{ color: 'rgba(255,255,255,0.48)', fontSize: '0.85rem', mb: 3 }}>All fields marked * are required</Typography>
 
-                  {/* Activation warning */}
-                  <Collapse in={error === 'activation'}>
-                    <Box sx={{ mb: 3, p: 2.5, borderRadius: 2, bgcolor: 'rgba(251,191,36,0.10)', border: '1px solid rgba(251,191,36,0.35)' }}>
-                      <Typography sx={{ color: '#FCD34D', fontWeight: 700, fontSize: '0.88rem', mb: 1 }}>
-                        ⚠️ One-time email activation required
-                      </Typography>
-                      <Typography sx={{ color: 'rgba(255,255,255,0.72)', fontSize: '0.82rem', lineHeight: 1.75, wordBreak: 'break-word' }}>
-                        FormSubmit has sent a <strong style={{ color: 'white' }}>confirmation email</strong> to{' '}
-                        <strong style={{ color: 'white' }}>Eduglobelankaconsultancy@gmail.com</strong>.
-                        Open that email and click <strong style={{ color: 'white' }}>"Confirm"</strong>, then resubmit this form.
-                        This is a <em>one-time</em> step.
-                      </Typography>
-                      <Button
-                        href="mailto:Eduglobelankaconsultancy@gmail.com?subject=Study Abroad Enquiry"
-                        component="a"
-                        size="small"
-                        sx={{ mt: 1.5, color: '#FCD34D', border: '1px solid rgba(252,211,77,0.45)', borderRadius: 30, px: 2.5, fontSize: '0.78rem', '&:hover': { bgcolor: 'rgba(252,211,77,0.08)' } }}
-                      >
-                        Or email us directly →
-                      </Button>
-                    </Box>
-                  </Collapse>
+
 
                   {/* Network error */}
                   <Collapse in={error === 'network'}>

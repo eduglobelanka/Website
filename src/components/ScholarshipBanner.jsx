@@ -34,24 +34,30 @@ const fadeUp = {
 
 // ── Single countdown tile ─────────────────────────────────────
 function CountBlock({ value, label }) {
+  const isLarge = value >= 100;
   return (
     <Box sx={{ textAlign: 'center', flex: '1 1 0', minWidth: 0 }}>
       <Box sx={{
         bgcolor: 'rgba(244,165,34,0.12)',
         border: '1px solid rgba(244,165,34,0.28)',
         borderRadius: 2,
-        px: { xs: 1, md: 1.5, lg: 2 },
+        px: { xs: 0.6, md: 1, lg: 1.5 },
         py: { xs: 0.8, md: 1.4, lg: 1.8 },
         mb: { xs: 0.5, md: 0.7 },
         minWidth: 0,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
       }}>
         <Typography sx={{
           color: ORANGE, fontWeight: 900, lineHeight: 1,
-          fontSize: { xs: '1.3rem', md: '2rem', lg: '2.4rem' },
+          fontSize: isLarge
+            ? { xs: '1rem', md: '1.55rem', lg: '1.85rem' }
+            : { xs: '1.3rem', md: '2rem', lg: '2.4rem' },
           fontFamily: '"Outfit",sans-serif',
           whiteSpace: 'nowrap',
         }}>
-          {String(value).padStart(2, '0')}
+          {value < 10 ? `0${value}` : value}
         </Typography>
       </Box>
       <Typography sx={{

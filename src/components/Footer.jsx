@@ -114,8 +114,13 @@ const Footer = () => {
                 The best student visa consultancy in Sri Lanka and Jaffna — turning your global study dream into a world-class reality since 2014.
               </Typography>
               <Box sx={{ display: 'flex', gap: 1 }}>
-                {[FB, IG, TW, YT].map((Icon, i) => (
-                  <IconButton key={i} size="small" sx={{ color: 'rgba(255,255,255,0.6)', bgcolor: 'rgba(255,255,255,0.07)', width: 36, height: 36, transition: 'all 0.25s ease', '&:hover': { bgcolor: theme.palette.secondary.main, color: theme.palette.primary.dark, transform: 'translateY(-3px)' } }}>
+                {[
+                  { Icon: FB, label: 'Facebook', href: '#' },
+                  { Icon: IG, label: 'Instagram', href: 'https://www.instagram.com/eduglobelankaconsultancy/' },
+                  { Icon: TW, label: 'Twitter', href: '#' },
+                  { Icon: YT, label: 'YouTube', href: '#' }
+                ].map(({ Icon, label, href }, i) => (
+                  <IconButton key={i} component="a" href={href} target={href !== '#' ? '_blank' : undefined} rel={href !== '#' ? 'noopener noreferrer' : undefined} aria-label={label} size="small" sx={{ color: 'rgba(255,255,255,0.6)', bgcolor: 'rgba(255,255,255,0.07)', width: 36, height: 36, transition: 'all 0.25s ease', '&:hover': { bgcolor: theme.palette.secondary.main, color: theme.palette.primary.dark, transform: 'translateY(-3px)' } }}>
                     <Icon />
                   </IconButton>
                 ))}

@@ -1,35 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Box, Container, Grid, Typography, Card, CardContent, Button, Chip, Avatar, useTheme, IconButton } from '@mui/material';
-import { Calendar, ArrowRight, Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Box, Container, Typography, Card, CardContent, Button, Avatar, useTheme, IconButton } from '@mui/material';
+import { ArrowRight, Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-
-const events = [
-  {
-    date: 'May 10, 2026',
-    title: 'Canada University Fair – Colombo',
-    desc: 'Meet representatives from 30+ top Canadian universities. Free registration for all students.',
-    tag: 'Upcoming',
-    tagBg: '#125A41',
-    accentColor: '#125A41',
-  },
-  {
-    date: 'May 18, 2026',
-    title: 'Australia Study Abroad Seminar',
-    desc: 'In-depth seminar covering IELTS requirements, scholarship opportunities, and PR pathways.',
-    tag: 'Free Entry',
-    tagBg: '#c48013',
-    accentColor: '#c48013',
-  },
-  {
-    date: 'Jun 5, 2026',
-    title: 'UK & Europe Education Expo 2026',
-    desc: 'Explore world-class universities and talk directly with official admissions officers.',
-    tag: 'Limited Seats',
-    tagBg: '#1565c0',
-    accentColor: '#1565c0',
-  },
-];
 
 const testimonials = [
   {
@@ -76,7 +49,6 @@ const testimonials = [
   },
 ];
 
-
 function TestimonialCarousel({ theme }) {
   const [idx, setIdx] = useState(0);
   const [dir, setDir] = useState(1);
@@ -90,7 +62,6 @@ function TestimonialCarousel({ theme }) {
   const next = useCallback(() => go((idx + 1) % total, 1), [idx, total, go]);
   const prev = useCallback(() => go((idx - 1 + total) % total, -1), [idx, total, go]);
 
-  // Auto-advance on mobile
   useEffect(() => {
     const id = setInterval(next, 4500);
     return () => clearInterval(id);
@@ -102,12 +73,10 @@ function TestimonialCarousel({ theme }) {
     exit: (d) => ({ opacity: 0, x: d > 0 ? -120 : 120, transition: { duration: 0.32 } }),
   };
 
-  // Duplicate cards for seamless marquee on desktop
   const doubled = [...testimonials, ...testimonials];
 
   return (
     <Box>
-      {/* ── DESKTOP: infinite marquee ── */}
       <Box sx={{ display: { xs: 'none', md: 'block' }, overflow: 'hidden' }}>
         <style>{`
           @keyframes marquee-scroll {
@@ -163,7 +132,6 @@ function TestimonialCarousel({ theme }) {
         </Box>
       </Box>
 
-      {/* ── MOBILE: one-at-a-time carousel ── */}
       <Box sx={{ display: { xs: 'block', md: 'none' } }}>
         <Box sx={{ overflow: 'hidden', minHeight: 300 }}>
           <AnimatePresence custom={dir} mode="wait">
@@ -201,7 +169,6 @@ function TestimonialCarousel({ theme }) {
           </AnimatePresence>
         </Box>
 
-        {/* Mobile controls */}
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, mt: 3 }}>
           <IconButton onClick={prev} sx={{ border: '1px solid rgba(18,90,65,0.2)', color: '#125A41', '&:hover': { bgcolor: '#125A41', color: 'white' }, transition: 'all 0.25s' }}>
             <ChevronLeft size={20} />
@@ -220,125 +187,42 @@ function TestimonialCarousel({ theme }) {
   );
 }
 
-
-const Events = () => {
+const Testimonials = () => {
   const theme = useTheme();
   const navigate = useNavigate();
 
   return (
-    <>
-      {/* ─── Events Section ─── */}
-      <Box id="events" sx={{ py: { xs: 8, md: 12 }, bgcolor: '#ffffff' }}>
-        <Container maxWidth="xl">
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: { xs: 'flex-start', sm: 'center' },
-              flexDirection: { xs: 'column', sm: 'row' },
-              gap: 2,
-              mb: 6,
-            }}
+    <Box sx={{ py: { xs: 8, md: 12 }, background: 'linear-gradient(150deg, #edf7f2 0%, #f5faf7 50%, #edf4f9 100%)' }}>
+      <Container maxWidth="xl">
+        <Box sx={{ textAlign: 'center', mb: 7 }}>
+          <Typography variant="overline" sx={{ color: theme.palette.secondary.main, fontWeight: 700, letterSpacing: 3, fontSize: '0.78rem' }}>
+            STUDENT TESTIMONIALS
+          </Typography>
+          <Typography variant="h2" sx={{ color: theme.palette.primary.main, mt: 1, mb: 2, fontSize: { xs: '1.9rem', md: '2.6rem' } }}>
+            What Our Students Say
+          </Typography>
+          <Typography variant="body1" sx={{ color: theme.palette.text.secondary, maxWidth: 520, mx: 'auto', lineHeight: 1.8 }}>
+            Thousands of students have shaped their future with EduGlobe Lanka. Here is what some of them have to say.
+          </Typography>
+        </Box>
+
+        <TestimonialCarousel theme={theme} />
+        
+        <Box sx={{ textAlign: 'center', mt: 6 }}>
+          <Button
+            variant="outlined"
+            color="primary"
+            size="large"
+            endIcon={<ArrowRight size={18} />}
+            onClick={() => navigate('/success-stories')}
+            sx={{ borderRadius: 30, px: 4, py: 1.4, fontWeight: 700 }}
           >
-            <Box>
-              <Typography variant="overline" sx={{ color: theme.palette.secondary.main, fontWeight: 700, letterSpacing: 3, fontSize: '0.78rem' }}>
-                LATEST EVENTS
-              </Typography>
-              <Typography variant="h2" sx={{ color: theme.palette.primary.main, mt: 0.5, fontSize: { xs: '1.9rem', md: '2.6rem' } }}>
-                Upcoming Events
-              </Typography>
-            </Box>
-            <Button
-              variant="outlined"
-              color="primary"
-              endIcon={<ArrowRight size={16} />}
-              sx={{ borderRadius: 30, px: 3, py: 1.2, fontWeight: 700, flexShrink: 0 }}
-            >
-              See All Events
-            </Button>
-          </Box>
-
-          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 3 }}>
-            {events.map((ev, i) => (
-              <Box key={i} sx={{ flex: { xs: '1 1 100%', md: '1 1 calc(33.33% - 16px)' }, minWidth: 0 }}>
-                <Card
-                  sx={{
-                    height: '100%',
-                    borderRadius: 3,
-                    border: `1px solid rgba(0,0,0,0.07)`,
-                    borderTop: `4px solid ${ev.accentColor}`,
-                    boxShadow: '0 4px 20px rgba(0,0,0,0.04)',
-                    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                    '&:hover': { transform: 'translateY(-6px)', boxShadow: '0 16px 40px rgba(0,0,0,0.10)' },
-                  }}
-                >
-                  <CardContent sx={{ p: 4 }}>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2.5, flexWrap: 'wrap', gap: 1 }}>
-                      <Chip
-                        label={ev.tag}
-                        size="small"
-                        sx={{ bgcolor: ev.tagBg, color: 'white', fontWeight: 700, borderRadius: 1, height: 24, fontSize: '0.7rem' }}
-                      />
-                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, color: theme.palette.text.secondary }}>
-                        <Calendar size={14} color={theme.palette.secondary.main} />
-                        <Typography variant="caption" sx={{ fontWeight: 600 }}>{ev.date}</Typography>
-                      </Box>
-                    </Box>
-                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, color: theme.palette.primary.main, lineHeight: 1.4, fontSize: '1.05rem' }}>
-                      {ev.title}
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: theme.palette.text.secondary, lineHeight: 1.8 }}>
-                      {ev.desc}
-                    </Typography>
-                    <Button
-                      variant="text"
-                      color="primary"
-                      endIcon={<ArrowRight size={15} />}
-                      sx={{ mt: 3, fontWeight: 700, p: 0, '&:hover': { bgcolor: 'transparent' } }}
-                    >
-                      Register Now
-                    </Button>
-                  </CardContent>
-                </Card>
-              </Box>
-            ))}
-          </Box>
-        </Container>
-      </Box>
-
-      {/* ─── Testimonials Carousel ─── */}
-      <Box sx={{ py: { xs: 8, md: 12 }, background: 'linear-gradient(150deg, #edf7f2 0%, #f5faf7 50%, #edf4f9 100%)' }}>
-        <Container maxWidth="xl">
-          <Box sx={{ textAlign: 'center', mb: 7 }}>
-            <Typography variant="overline" sx={{ color: theme.palette.secondary.main, fontWeight: 700, letterSpacing: 3, fontSize: '0.78rem' }}>
-              STUDENT TESTIMONIALS
-            </Typography>
-            <Typography variant="h2" sx={{ color: theme.palette.primary.main, mt: 1, mb: 2, fontSize: { xs: '1.9rem', md: '2.6rem' } }}>
-              What Our Students Say
-            </Typography>
-            <Typography variant="body1" sx={{ color: theme.palette.text.secondary, maxWidth: 520, mx: 'auto', lineHeight: 1.8 }}>
-              Thousands of students have shaped their future with EduGlobe Lanka. Here is what some of them have to say.
-            </Typography>
-          </Box>
-
-          <TestimonialCarousel theme={theme} />
-          
-          <Box sx={{ textAlign: 'center', mt: 6 }}>
-            <Button
-              variant="outlined"
-              color="primary"
-              size="large"
-              endIcon={<ArrowRight size={18} />}
-              onClick={() => navigate('/success-stories')}
-              sx={{ borderRadius: 30, px: 4, py: 1.4, fontWeight: 700 }}
-            >
-              View Full Success Stories
-            </Button>
-          </Box>
-        </Container>
-      </Box>
-    </>
+            View Full Success Stories
+          </Button>
+        </Box>
+      </Container>
+    </Box>
   );
 };
 
-export default Events;
+export default Testimonials;

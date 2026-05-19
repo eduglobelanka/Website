@@ -1,5 +1,7 @@
 import React from 'react';
-import { Box, Container, Typography, useTheme } from '@mui/material';
+import { Box, Container, Typography, useTheme, Button } from '@mui/material';
+import { ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const galleryImages = [
   "/assets/images/gallery_1.webp",
@@ -12,6 +14,7 @@ const galleryImages = [
 
 const Gallery = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
 
   return (
     <Box id="gallery" sx={{ py: { xs: 8, md: 12 }, bgcolor: '#ffffff' }}>
@@ -21,7 +24,7 @@ const Gallery = () => {
             OUR MOMENTS
           </Typography>
           <Typography variant="h2" sx={{ color: theme.palette.primary.main, mt: 1, mb: 2, fontSize: { xs: '2rem', md: '2.8rem' } }}>
-            EduGlobe Gallery
+            Success Stories & Gallery
           </Typography>
           <Typography variant="body1" sx={{ color: theme.palette.text.secondary, maxWidth: 600, mx: 'auto', lineHeight: 1.8 }}>
             A glimpse into the lives of our students and the milestones we have achieved together.
@@ -47,6 +50,19 @@ const Gallery = () => {
               />
             </Box>
           ))}
+        </Box>
+
+        <Box sx={{ textAlign: 'center', mt: 6 }}>
+          <Button
+            variant="outlined"
+            color="primary"
+            size="large"
+            endIcon={<ArrowRight size={18} />}
+            onClick={() => navigate('/success-stories')}
+            sx={{ borderRadius: 30, px: 4, py: 1.4, fontWeight: 700 }}
+          >
+            View Full Success Stories
+          </Button>
         </Box>
       </Container>
     </Box>

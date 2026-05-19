@@ -7,16 +7,21 @@ import theme from './theme';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import ScholarshipBanner from './components/ScholarshipBanner';
-const Partners     = React.lazy(() => import('./components/Partners'));
-const Features     = React.lazy(() => import('./components/Features'));
-const WhoWeAre     = React.lazy(() => import('./components/WhoWeAre'));
+const Partners = React.lazy(() => import('./components/Partners'));
+const ServicesSection = React.lazy(() => import('./components/ServicesSection'));
+const Features = React.lazy(() => import('./components/Features'));
+const WhoWeAre = React.lazy(() => import('./components/WhoWeAre'));
 const Destinations = React.lazy(() => import('./components/Destinations'));
-// const Events    = React.lazy(() => import('./components/Events')); // temporarily hidden
-const News         = React.lazy(() => import('./components/News'));
-const Gallery      = React.lazy(() => import('./components/Gallery'));
-const Contact      = React.lazy(() => import('./components/Contact'));
-const Footer       = React.lazy(() => import('./components/Footer'));
-const Register     = React.lazy(() => import('./components/Register'));
+const Testimonials = React.lazy(() => import('./components/Testimonials'));
+const News = React.lazy(() => import('./components/News'));
+const Gallery = React.lazy(() => import('./components/Gallery'));
+const Contact = React.lazy(() => import('./components/Contact'));
+const Footer = React.lazy(() => import('./components/Footer'));
+const Register = React.lazy(() => import('./components/Register'));
+const SuccessStories = React.lazy(() => import('./components/SuccessStories'));
+const AboutUs = React.lazy(() => import('./components/AboutUs'));
+const DestinationPage = React.lazy(() => import('./components/DestinationPage'));
+const ServicePage = React.lazy(() => import('./components/ServicePage'));
 import WhatsAppWidget from './components/WhatsAppWidget';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
@@ -60,6 +65,9 @@ function HomePage() {
         <React.Suspense fallback={<div style={{ minHeight: '120px' }} />}>
           <Partners />
         </React.Suspense>
+        <React.Suspense fallback={<div style={{ minHeight: '400px' }} />}>
+          <ServicesSection />
+        </React.Suspense>
         <React.Suspense fallback={<div style={{ minHeight: '500px' }} />}>
           <Features />
         </React.Suspense>
@@ -69,7 +77,9 @@ function HomePage() {
         <React.Suspense fallback={<div style={{ minHeight: '700px' }} />}>
           <Destinations />
         </React.Suspense>
-        {/* Events section temporarily hidden */}
+        <React.Suspense fallback={<div style={{ minHeight: '500px' }} />}>
+          <Testimonials />
+        </React.Suspense>
         <React.Suspense fallback={<div style={{ minHeight: '500px' }} />}>
           <News />
         </React.Suspense>
@@ -100,6 +110,38 @@ function App() {
           element={
             <React.Suspense fallback={<div style={{ minHeight: '100vh', background: '#06120C' }} />}>
               <Register />
+            </React.Suspense>
+          }
+        />
+        <Route
+          path="/success-stories"
+          element={
+            <React.Suspense fallback={<div style={{ minHeight: '100vh', background: '#f5f7f6' }} />}>
+              <SuccessStories />
+            </React.Suspense>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <React.Suspense fallback={<div style={{ minHeight: '100vh', background: '#ffffff' }} />}>
+              <AboutUs />
+            </React.Suspense>
+          }
+        />
+        <Route
+          path="/study-in/:countryId"
+          element={
+            <React.Suspense fallback={<div style={{ minHeight: '100vh', background: '#071810' }} />}>
+              <DestinationPage />
+            </React.Suspense>
+          }
+        />
+        <Route
+          path="/services/:serviceId"
+          element={
+            <React.Suspense fallback={<div style={{ minHeight: '100vh', background: '#071810' }} />}>
+              <ServicePage />
             </React.Suspense>
           }
         />
