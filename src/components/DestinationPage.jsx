@@ -1,4 +1,21 @@
 import React, { useEffect } from 'react';
+
+// ── SEO helper ────────────────────────────────────────────────
+function setMeta(name, content) {
+  let el = document.querySelector(`meta[name="${name}"]`);
+  if (!el) { el = document.createElement('meta'); el.name = name; document.head.appendChild(el); }
+  el.setAttribute('content', content);
+}
+function setOgMeta(property, content) {
+  let el = document.querySelector(`meta[property="${property}"]`);
+  if (!el) { el = document.createElement('meta'); el.setAttribute('property', property); document.head.appendChild(el); }
+  el.setAttribute('content', content);
+}
+function setCanonical(url) {
+  let el = document.querySelector('link[rel="canonical"]');
+  if (!el) { el = document.createElement('link'); el.rel = 'canonical'; document.head.appendChild(el); }
+  el.href = url;
+}
 import { useParams, useNavigate, Navigate } from 'react-router-dom';
 import { Box, Container, Typography, Grid, Button, Card, CardContent } from '@mui/material';
 import { motion } from 'framer-motion';
@@ -19,7 +36,23 @@ const DestinationPage = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [countryId]);
+    if (!dest) return;
+    const pageTitle = `Study in ${dest.name} | EduGlobe Lanka – Visa & Admission Experts`;
+    const pageDesc = `Planning to study in ${dest.name}? EduGlobe Lanka provides expert student visa consultation, university selection, and full application support for Sri Lankan students.`;
+    const canonicalUrl = `https://www.eduglobelanka.lk/study-in/${countryId}`;
+    document.title = pageTitle;
+    setMeta('description', pageDesc);
+    setOgMeta('og:title', pageTitle);
+    setOgMeta('og:description', pageDesc);
+    setOgMeta('og:url', canonicalUrl);
+    setCanonical(canonicalUrl);
+    return () => {
+      // Restore homepage defaults on unmount
+      document.title = 'EduGlobe Lanka – Best Student Visa Consultancy in Sri Lanka & Jaffna';
+      setMeta('description', 'EduGlobe Lanka is recognized as the best student visa consultancy in Sri Lanka and Jaffna. Get expert guidance for student visas to the UK, Canada, Australia, USA & New Zealand.');
+      setCanonical('https://www.eduglobelanka.lk/');
+    };
+  }, [countryId, dest]);
 
   if (!dest) {
     return <Navigate to="/" replace />; // Fallback if country not found

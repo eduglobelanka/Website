@@ -1,4 +1,21 @@
 import React, { useEffect } from 'react';
+
+// ── SEO helper ────────────────────────────────────────────────
+function setMeta(name, content) {
+  let el = document.querySelector(`meta[name="${name}"]`);
+  if (!el) { el = document.createElement('meta'); el.name = name; document.head.appendChild(el); }
+  el.setAttribute('content', content);
+}
+function setOgMeta(property, content) {
+  let el = document.querySelector(`meta[property="${property}"]`);
+  if (!el) { el = document.createElement('meta'); el.setAttribute('property', property); document.head.appendChild(el); }
+  el.setAttribute('content', content);
+}
+function setCanonical(url) {
+  let el = document.querySelector('link[rel="canonical"]');
+  if (!el) { el = document.createElement('link'); el.rel = 'canonical'; document.head.appendChild(el); }
+  el.href = url;
+}
 import { useParams, useNavigate, Navigate } from 'react-router-dom';
 import { Box, Container, Typography, Grid, Button, Card, CardContent } from '@mui/material';
 import { motion } from 'framer-motion';
@@ -25,7 +42,22 @@ const ServicePage = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [serviceId]);
+    if (!service) return;
+    const pageTitle = `${service.title} | EduGlobe Lanka – Sri Lanka's #1 Study Abroad Consultancy`;
+    const pageDesc = `${service.description.slice(0, 155)}...`;
+    const canonicalUrl = `https://www.eduglobelanka.lk/services/${serviceId}`;
+    document.title = pageTitle;
+    setMeta('description', pageDesc);
+    setOgMeta('og:title', pageTitle);
+    setOgMeta('og:description', pageDesc);
+    setOgMeta('og:url', canonicalUrl);
+    setCanonical(canonicalUrl);
+    return () => {
+      document.title = 'EduGlobe Lanka – Best Student Visa Consultancy in Sri Lanka & Jaffna';
+      setMeta('description', 'EduGlobe Lanka is recognized as the best student visa consultancy in Sri Lanka and Jaffna. Get expert guidance for student visas to the UK, Canada, Australia, USA & New Zealand.');
+      setCanonical('https://www.eduglobelanka.lk/');
+    };
+  }, [serviceId, service]);
 
   if (!service) {
     return <Navigate to="/" replace />; // Fallback if service not found

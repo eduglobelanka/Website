@@ -1,4 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
+// ── SEO helper ────────────────────────────────────────────────
+function setMeta(name, content) {
+  let el = document.querySelector(`meta[name="${name}"]`);
+  if (!el) { el = document.createElement('meta'); el.name = name; document.head.appendChild(el); }
+  el.setAttribute('content', content);
+}
+function setOgMeta(property, content) {
+  let el = document.querySelector(`meta[property="${property}"]`);
+  if (!el) { el = document.createElement('meta'); el.setAttribute('property', property); document.head.appendChild(el); }
+  el.setAttribute('content', content);
+}
+function setCanonical(url) {
+  let el = document.querySelector('link[rel="canonical"]');
+  if (!el) { el = document.createElement('link'); el.rel = 'canonical'; document.head.appendChild(el); }
+  el.href = url;
+}
 import { Box, Container, Typography, Button, Avatar, Chip } from '@mui/material';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Star, Quote, GraduationCap, MapPin, ArrowRight, CheckCircle, TrendingUp } from 'lucide-react';
@@ -149,6 +166,23 @@ const stats = [
 
 const SuccessStories = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const title = 'Student Success Stories | EduGlobe Lanka – Real Students, Real Results';
+    const desc = 'Read inspiring success stories from 200+ Sri Lankan students placed at top universities in the UK, Canada, Australia & more by EduGlobe Lanka Consultancy.';
+    const canonical = 'https://www.eduglobelanka.lk/success-stories';
+    document.title = title;
+    setMeta('description', desc);
+    setOgMeta('og:title', title);
+    setOgMeta('og:description', desc);
+    setOgMeta('og:url', canonical);
+    setCanonical(canonical);
+    return () => {
+      document.title = 'EduGlobe Lanka – Best Student Visa Consultancy in Sri Lanka & Jaffna';
+      setMeta('description', 'EduGlobe Lanka is recognized as the best student visa consultancy in Sri Lanka and Jaffna. Get expert guidance for student visas to the UK, Canada, Australia, USA & New Zealand.');
+      setCanonical('https://www.eduglobelanka.lk/');
+    };
+  }, []);
   const [hovered, setHovered] = useState(null);
 
   return (

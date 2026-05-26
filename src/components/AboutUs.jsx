@@ -1,5 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box, Container, Typography, Grid, Button } from '@mui/material';
+
+// ── SEO helper ────────────────────────────────────────────────
+function setMeta(name, content) {
+  let el = document.querySelector(`meta[name="${name}"]`);
+  if (!el) { el = document.createElement('meta'); el.name = name; document.head.appendChild(el); }
+  el.setAttribute('content', content);
+}
+function setOgMeta(property, content) {
+  let el = document.querySelector(`meta[property="${property}"]`);
+  if (!el) { el = document.createElement('meta'); el.setAttribute('property', property); document.head.appendChild(el); }
+  el.setAttribute('content', content);
+}
+function setCanonical(url) {
+  let el = document.querySelector('link[rel="canonical"]');
+  if (!el) { el = document.createElement('link'); el.rel = 'canonical'; document.head.appendChild(el); }
+  el.href = url;
+}
 import { motion } from 'framer-motion';
 import { Target, Shield, Users, Award, ArrowLeft, CheckCircle } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
@@ -56,6 +73,23 @@ const checkPoints = [
 
 const AboutUs = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const title = 'About EduGlobe Lanka | Premier Study Abroad Consultancy in Sri Lanka & Jaffna';
+    const desc = 'Learn about EduGlobe Lanka — Sri Lanka\'s trusted student visa consultancy in Colombo and Jaffna. 200+ students placed, 98% visa success rate, 5+ years experience.';
+    const canonical = 'https://www.eduglobelanka.lk/about';
+    document.title = title;
+    setMeta('description', desc);
+    setOgMeta('og:title', title);
+    setOgMeta('og:description', desc);
+    setOgMeta('og:url', canonical);
+    setCanonical(canonical);
+    return () => {
+      document.title = 'EduGlobe Lanka – Best Student Visa Consultancy in Sri Lanka & Jaffna';
+      setMeta('description', 'EduGlobe Lanka is recognized as the best student visa consultancy in Sri Lanka and Jaffna. Get expert guidance for student visas to the UK, Canada, Australia, USA & New Zealand.');
+      setCanonical('https://www.eduglobelanka.lk/');
+    };
+  }, []);
 
   return (
     <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', bgcolor: '#f5f7f6' }}>
