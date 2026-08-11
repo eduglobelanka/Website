@@ -66,16 +66,25 @@
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "EducationalOrganization",
+      "@type": ["EducationalOrganization", "LocalBusiness"],
       "name": "EduGlobe Lanka Consultancy",
-      "description": "Recognized as the best student visa consultancy in Sri Lanka and Jaffna, providing expert guidance for studying abroad.",
+      "alternateName": "EduGlobe Lanka",
+      "description": "Recognized as the best student visa consultancy in Sri Lanka and Jaffna, providing expert guidance for studying abroad in the UK, Canada, Australia, USA and New Zealand.",
       "url": "https://www.eduglobelanka.lk",
       "logo": "https://www.eduglobelanka.lk/eduglobelogo.png",
       "image": "https://www.eduglobelanka.lk/eduglobelogo.png",
+      "telephone": "+447401148372",
+      "email": "Eduglobelankaconsultancy@gmail.com",
+      "priceRange": "Free Consultation",
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "18:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "14:00" }
+      ],
       "address": [
         {
           "@type": "PostalAddress",
-          "addressLocality": "Colombo",
+          "streetAddress": "No. 45, Duplication Road",
+          "addressLocality": "Colombo 03",
           "addressRegion": "Western Province",
           "addressCountry": "LK"
         },
@@ -85,6 +94,15 @@
           "addressRegion": "Northern Province",
           "addressCountry": "LK"
         }
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "6.9103",
+        "longitude": "79.8530"
+      },
+      "sameAs": [
+        "https://www.instagram.com/eduglobelankaconsultancy/",
+        "https://maps.app.goo.gl/REPLACE_WITH_YOUR_GOOGLE_MAPS_LINK"
       ],
       "aggregateRating": {
         "@type": "AggregateRating",

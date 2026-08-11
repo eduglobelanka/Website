@@ -92,11 +92,11 @@ const ScholarshipBanner = () => {
   const navigate  = useNavigate();
   const ref       = useRef(null);
   const inView    = useInView(ref, { once: true, amount: 0.15 });
-  const countdown = useCountdown('2026-09-01T00:00:00');
+  const countdown = useCountdown('2027-01-01T00:00:00');
   const perks = [
     { icon: <Gift size={14} />,         text: '£3,000 scholarship' },
     { icon: <BadgeCheck size={14} />,   text: 'University of East London' },
-    { icon: <GraduationCap size={14} />, text: 'September 2026 intake' },
+    { icon: <GraduationCap size={14} />, text: 'January 2027 intake' },
   ];
 
   const whatYouGet = [
@@ -160,7 +160,7 @@ const ScholarshipBanner = () => {
                   </Box>
                 </motion.div>
                 <Chip
-                  label="September 2026 Intake"
+                  label="January 2027 Intake"
                   size="small"
                   icon={<Clock size={11} color={ORANGE} style={{ marginLeft: 8 }} />}
                   sx={{ bgcolor: 'rgba(244,165,34,0.1)', color: 'rgba(255,255,255,0.75)', border: '1px solid rgba(244,165,34,0.25)', fontSize: '0.7rem', fontWeight: 600 }}
@@ -193,7 +193,7 @@ const ScholarshipBanner = () => {
               <Typography sx={{ color: 'rgba(255,255,255,0.6)', fontSize: { xs: '0.9rem', md: '1rem' }, lineHeight: 1.8, maxWidth: 560, mb: 3 }}>
                 Apply through{' '}
                 <Box component="span" sx={{ color: ORANGE, fontWeight: 700 }}>EduGlobe Lanka</Box> to the{' '}
-                <Box component="span" sx={{ color: 'white', fontWeight: 700 }}>University of East London</Box> for the September 2026 intake and get{' '}
+                <Box component="span" sx={{ color: 'white', fontWeight: 700 }}>University of East London</Box> for the January 2027 intake and get{' '}
                 <Box component="span" sx={{ color: ORANGE, fontWeight: 700 }}>£3,000 off</Box>{' '}
                 your first-year tuition — exclusively through us.
               </Typography>

@@ -61,7 +61,7 @@ const Register = () => {
 
   useEffect(() => {
     const title = 'Register & Apply | EduGlobe Lanka – Free Consultation for Studying Abroad';
-    const desc = 'Apply for a free consultation with EduGlobe Lanka. Get expert guidance for studying in the UK, Canada & Australia. Claim your £3,000 scholarship for September 2026 intake.';
+    const desc = 'Apply for a free consultation with EduGlobe Lanka. Get expert guidance for studying in the UK, Canada & Australia. Claim your £3,000 scholarship for January 2027 intake.';
     const canonical = 'https://www.eduglobelanka.lk/register';
     document.title = title;
     setMeta('description', desc);
@@ -236,13 +236,13 @@ const Register = () => {
                       <Typography sx={{ fontWeight: 800, fontSize: '0.65rem', letterSpacing: 1.5 }}>EXCLUSIVE OFFER</Typography>
                     </Box>
                   </motion.div>
-                  <Chip label="2026" size="small" sx={{ bgcolor: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.6)', fontSize: '0.68rem', fontWeight: 700, border: '1px solid rgba(255,255,255,0.12)' }} />
+                  <Chip label="2027" size="small" sx={{ bgcolor: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.6)', fontSize: '0.68rem', fontWeight: 700, border: '1px solid rgba(255,255,255,0.12)' }} />
                 </Box>
 
                 {/* Scholarship amount */}
                 <Box sx={{ mb: 2.5 }}>
                   <Typography sx={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.82rem', fontWeight: 600, letterSpacing: 1, textTransform: 'uppercase', mb: 0.5 }}>
-                    September 2026 Intake
+                    January 2027 Intake
                   </Typography>
                   <Box sx={{ display: 'flex', alignItems: 'flex-end', gap: 1.5 }}>
                     <motion.div
@@ -263,7 +263,7 @@ const Register = () => {
                     Scholarship Guarantee
                   </Typography>
                   <Typography sx={{ color: 'rgba(255,255,255,0.58)', fontSize: '0.88rem', mt: 1, lineHeight: 1.7 }}>
-                    Apply through <Box component="span" sx={{ color: ORANGE, fontWeight: 700 }}>EduGlobe Lanka</Box> to the <Box component="span" sx={{ color: 'white', fontWeight: 700 }}>University of East London</Box> for the September 2026 intake and receive a guaranteed <Box component="span" sx={{ color: 'white', fontWeight: 700 }}>£3,000 scholarship</Box> — directly off your tuition fees.
+                    Apply through <Box component="span" sx={{ color: ORANGE, fontWeight: 700 }}>EduGlobe Lanka</Box> to the <Box component="span" sx={{ color: 'white', fontWeight: 700 }}>University of East London</Box> for the January 2027 intake and receive a guaranteed <Box component="span" sx={{ color: 'white', fontWeight: 700 }}>£3,000 scholarship</Box> — directly off your tuition fees.
                   </Typography>
                 </Box>
 
@@ -274,7 +274,7 @@ const Register = () => {
                 {[
                   { icon: <Gift size={15} />, text: '£3,000 off your first-year tuition' },
                   { icon: <BadgeCheck size={15} />, text: 'Exclusively at University of East London' },
-                  { icon: <Star size={15} />, text: 'September 2026 intake only' },
+                  { icon: <Star size={15} />, text: 'January 2027 intake only' },
                 ].map(({ icon, text }) => (
                   <Box key={text} sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1.2 }}>
                     <Box sx={{ color: ORANGE, flexShrink: 0 }}>{icon}</Box>

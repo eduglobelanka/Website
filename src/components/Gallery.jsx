@@ -4,12 +4,12 @@ import { ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const galleryImages = [
-  "/assets/images/gallery_1.webp",
-  "/assets/images/gallery_2.webp",
-  "/assets/images/student_1.webp",
-  "/assets/images/student_2.webp",
-  "/assets/images/country_canada.webp",
-  "/assets/images/country_aus.webp"
+  { src: "/assets/images/gallery_1.webp",      alt: "EduGlobe Lanka students celebrating successful UK visa approvals in Sri Lanka" },
+  { src: "/assets/images/gallery_2.webp",      alt: "EduGlobe Lanka consultancy team counselling students for overseas education in Jaffna" },
+  { src: "/assets/images/student_1.webp",      alt: "Sri Lankan student with university acceptance letter secured through EduGlobe Lanka" },
+  { src: "/assets/images/student_2.webp",      alt: "Happy student at pre-departure briefing with EduGlobe Lanka consultancy team" },
+  { src: "/assets/images/country_canada.webp", alt: "Students studying in Canada with EduGlobe Lanka's expert visa guidance" },
+  { src: "/assets/images/country_aus.webp",    alt: "Sri Lankan students at Australian university campus supported by EduGlobe Lanka" },
 ];
 
 const Gallery = () => {
@@ -32,7 +32,7 @@ const Gallery = () => {
         </Box>
 
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: 'repeat(3,1fr)' }, gap: 2 }}>
-          {galleryImages.map((img, index) => (
+          {galleryImages.map((item, index) => (
             <Box
               key={index}
               sx={{
@@ -44,8 +44,9 @@ const Gallery = () => {
               }}
             >
               <img
-                src={img}
-                alt={`EduGlobeLanka Consultancy Gallery Moment ${index + 1}`}
+                src={item.src}
+                alt={item.alt}
+                loading="lazy"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s ease' }}
               />
             </Box>
