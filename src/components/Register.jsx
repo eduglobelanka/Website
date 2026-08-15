@@ -97,13 +97,16 @@ const Register = () => {
       } catch { /* silent */ }
 
       // Web3Forms
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '2bc10ea7-5fbb-45c9-a453-26dbad56aba9';
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          access_key: '2bc10ea7-5fbb-45c9-a453-26dbad56aba9',
+          access_key: accessKey,
           subject: `New Application from ${form.name} — EduGlobe Lanka`,
           from_name: 'EduGlobe Lanka Website',
+          replyto: form.email,
+          botcheck: false,
           Name: form.name,
           Email: form.email,
           Phone: form.phone || '—',
@@ -121,6 +124,7 @@ const Register = () => {
         setSubmitted(true);
         setForm({ name: '', email: '', phone: '', destination: '', intakeYear: '', message: '' });
       } else {
+        console.error('[Web3Forms] error:', json.message || json);
         setError('network');
       }
     } catch {
