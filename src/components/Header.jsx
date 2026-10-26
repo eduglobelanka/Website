@@ -127,32 +127,102 @@ const Header = () => {
   return (
     <AppBar
       position="sticky"
-      elevation={scrolled ? 3 : 0}
+      elevation={0}
       sx={{
-        background: '#ffffff',
+        background: scrolled
+          ? 'rgba(255, 255, 255, 0.88)'
+          : 'rgba(255, 255, 255, 0.98)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+        borderBottom: '1px solid',
+        borderColor: scrolled ? 'rgba(226, 232, 240, 0.8)' : 'rgba(226, 232, 240, 0.4)',
+        boxShadow: scrolled
+          ? '0 10px 30px -10px rgba(15, 23, 42, 0.08)'
+          : 'none',
         color: theme.palette.text.primary,
-        transition: 'box-shadow 0.3s ease',
+        transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
       }}
     >
       {/* Top Strip */}
       {!isMobile && (
-        <Box sx={{ bgcolor: theme.palette.primary.dark, py: 0.7 }}>
+        <Box sx={{
+          background: 'linear-gradient(90deg, #082E21 0%, #0F4D37 100%)',
+          py: 0.65,
+          borderBottom: '1px solid rgba(255,255,255,0.06)',
+        }}>
           <Container maxWidth="xl" sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Box sx={{ display: 'flex', gap: 4 }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'rgba(255,255,255,0.85)' }}>
-                <PhoneIcon size={14} color={theme.palette.secondary.main} />
-                <Typography variant="caption" sx={{ fontWeight: 500 }}>+44 7401 148372</Typography>
+            <Box sx={{ display: 'flex', gap: 3.5 }}>
+              <Box
+                component="a"
+                href="tel:+447401148372"
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 0.9,
+                  color: 'rgba(255,255,255,0.88)',
+                  textDecoration: 'none',
+                  fontSize: '0.78rem',
+                  fontWeight: 500,
+                  transition: 'color 0.2s',
+                  '&:hover': { color: theme.palette.secondary.main },
+                }}
+              >
+                <PhoneIcon size={13} color={theme.palette.secondary.main} />
+                <span>+44 7401 148372</span>
               </Box>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'rgba(255,255,255,0.85)' }}>
-                <Mail size={14} color={theme.palette.secondary.main} />
-                <Typography variant="caption" sx={{ fontWeight: 500 }}>Eduglobelankaconsultancy@gmail.com</Typography>
+              <Box
+                component="a"
+                href="mailto:Eduglobelankaconsultancy@gmail.com"
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 0.9,
+                  color: 'rgba(255,255,255,0.88)',
+                  textDecoration: 'none',
+                  fontSize: '0.78rem',
+                  fontWeight: 500,
+                  transition: 'color 0.2s',
+                  '&:hover': { color: theme.palette.secondary.main },
+                }}
+              >
+                <Mail size={13} color={theme.palette.secondary.main} />
+                <span>Eduglobelankaconsultancy@gmail.com</span>
               </Box>
             </Box>
-            <Box sx={{ display: 'flex', gap: 2, color: 'rgba(255,255,255,0.8)' }}>
-              <Box component="a" href="#" sx={{ color: 'inherit', display: 'flex', '&:hover': { color: theme.palette.secondary.main }, transition: 'color 0.2s' }}><FacebookIcon /></Box>
-              <Box component="a" href="https://www.instagram.com/eduglobelankaconsultancy/" target="_blank" rel="noopener noreferrer" sx={{ color: 'inherit', display: 'flex', '&:hover': { color: theme.palette.secondary.main }, transition: 'color 0.2s' }}><InstagramIcon /></Box>
-              <Box component="a" href="#" sx={{ color: 'inherit', display: 'flex', '&:hover': { color: theme.palette.secondary.main }, transition: 'color 0.2s' }}><TwitterIcon /></Box>
-              <Box component="a" href="#" sx={{ color: 'inherit', display: 'flex', '&:hover': { color: theme.palette.secondary.main }, transition: 'color 0.2s' }}><YoutubeIcon /></Box>
+            <Box sx={{ display: 'flex', gap: 1.5, alignItems: 'center' }}>
+              {[
+                { icon: <FacebookIcon />, href: '#', label: 'Facebook' },
+                { icon: <InstagramIcon />, href: 'https://www.instagram.com/eduglobelankaconsultancy/', label: 'Instagram' },
+                { icon: <TwitterIcon />, href: '#', label: 'Twitter' },
+                { icon: <YoutubeIcon />, href: '#', label: 'YouTube' },
+              ].map((s, idx) => (
+                <Box
+                  key={idx}
+                  component="a"
+                  href={s.href}
+                  target={s.href !== '#' ? '_blank' : undefined}
+                  rel={s.href !== '#' ? 'noopener noreferrer' : undefined}
+                  aria-label={s.label}
+                  sx={{
+                    color: 'rgba(255,255,255,0.75)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: 26,
+                    height: 26,
+                    borderRadius: '50%',
+                    bgcolor: 'rgba(255,255,255,0.06)',
+                    transition: 'all 0.2s',
+                    '&:hover': {
+                      color: '#082E21',
+                      bgcolor: theme.palette.secondary.main,
+                      transform: 'translateY(-1px)',
+                    },
+                  }}
+                >
+                  {s.icon}
+                </Box>
+              ))}
             </Box>
           </Container>
         </Box>
@@ -160,15 +230,26 @@ const Header = () => {
 
       {/* Main Nav */}
       <Container maxWidth="xl">
-        <Toolbar disableGutters sx={{ py: 1.5, justifyContent: 'space-between' }}>
+        <Toolbar disableGutters sx={{ py: { xs: 1, md: 1.2 }, justifyContent: 'space-between' }}>
           {/* Logo */}
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-            <img src="/eduglobelogo.png" alt="EduGlobeLanka Logo" style={{ height: 48, objectFit: 'contain' }} />
+          <Box
+            onClick={() => scrollToSection('/#home')}
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 1.5,
+              cursor: 'pointer',
+              userSelect: 'none',
+              transition: 'opacity 0.2s',
+              '&:hover': { opacity: 0.9 },
+            }}
+          >
+            <img src="/eduglobelogo.png" alt="EduGlobeLanka Logo" style={{ height: 46, objectFit: 'contain' }} />
             <Box sx={{ lineHeight: 1 }}>
-              <Typography sx={{ fontFamily: '"Outfit", sans-serif', fontWeight: 800, fontSize: '1.4rem', color: theme.palette.primary.main, lineHeight: 1 }}>
+              <Typography sx={{ fontFamily: '"Outfit", sans-serif', fontWeight: 800, fontSize: '1.35rem', color: theme.palette.primary.main, lineHeight: 1, letterSpacing: '-0.02em' }}>
                 EduGlobe
               </Typography>
-              <Typography sx={{ fontWeight: 700, fontSize: '0.65rem', color: theme.palette.secondary.main, letterSpacing: '0.25em', lineHeight: 1.2 }}>
+              <Typography sx={{ fontWeight: 800, fontSize: '0.62rem', color: theme.palette.secondary.main, letterSpacing: '0.28em', lineHeight: 1.2 }}>
                 LANKA
               </Typography>
             </Box>
@@ -176,7 +257,7 @@ const Header = () => {
 
           {/* Desktop Nav */}
           {!isMobile ? (
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.4 }}>
               {navItems.map((item) => (
                 <Button
                   key={item.label}
@@ -184,24 +265,14 @@ const Header = () => {
                   sx={{
                     color: theme.palette.text.secondary,
                     fontWeight: 600,
-                    px: 2,
-                    fontSize: '0.9rem',
-                    position: 'relative',
-                    '&::after': {
-                      content: '""',
-                      position: 'absolute',
-                      bottom: 6,
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      width: 0,
-                      height: '2px',
-                      bgcolor: theme.palette.primary.main,
-                      transition: 'width 0.3s ease',
-                    },
+                    px: 1.8,
+                    py: 0.8,
+                    borderRadius: 999,
+                    fontSize: '0.88rem',
+                    transition: 'all 0.2s ease',
                     '&:hover': {
                       color: theme.palette.primary.main,
-                      bgcolor: 'transparent',
-                      '&::after': { width: '60%' },
+                      bgcolor: 'rgba(15, 77, 55, 0.06)',
                     },
                   }}
                 >
@@ -210,16 +281,30 @@ const Header = () => {
               ))}
               <Button
                 variant="contained"
-                color="primary"
+                color="secondary"
                 onClick={() => scrollToSection('#contact')}
-                sx={{ ml: 2, px: 3, py: 1, borderRadius: 30, fontWeight: 700, fontSize: '0.9rem' }}
+                sx={{
+                  ml: 1.5,
+                  px: 2.8,
+                  py: 1,
+                  borderRadius: 999,
+                  fontWeight: 700,
+                  fontSize: '0.88rem',
+                }}
               >
                 Free Consultation
               </Button>
             </Box>
           ) : (
-            <IconButton onClick={() => setMobileOpen(true)} sx={{ color: theme.palette.primary.main }}>
-              <MenuIcon size={26} />
+            <IconButton
+              onClick={() => setMobileOpen(true)}
+              sx={{
+                color: theme.palette.primary.main,
+                bgcolor: 'rgba(15, 77, 55, 0.05)',
+                '&:hover': { bgcolor: 'rgba(15, 77, 55, 0.1)' },
+              }}
+            >
+              <MenuIcon size={24} />
             </IconButton>
           )}
         </Toolbar>
@@ -230,7 +315,13 @@ const Header = () => {
         anchor="right"
         open={mobileOpen}
         onClose={() => setMobileOpen(false)}
-        PaperProps={{ sx: { width: 300 } }}
+        PaperProps={{
+          sx: {
+            width: 320,
+            bgcolor: '#ffffff',
+            boxShadow: '-10px 0 40px rgba(0,0,0,0.15)',
+          },
+        }}
       >
         {drawer}
       </Drawer>

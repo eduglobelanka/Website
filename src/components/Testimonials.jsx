@@ -77,7 +77,17 @@ function TestimonialCarousel({ theme }) {
 
   return (
     <Box>
-      <Box sx={{ display: { xs: 'none', md: 'block' }, overflow: 'hidden' }}>
+      <Box
+        sx={{
+          display: { xs: 'none', md: 'block' },
+          position: 'relative',
+          overflow: 'hidden',
+          py: 2,
+          /* Premium CSS gradient mask: smoothly fades cards out at left (0-12%) and right (88-100%) */
+          WebkitMaskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 12%, rgba(0,0,0,1) 88%, transparent 100%)',
+          maskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,1) 12%, rgba(0,0,0,1) 88%, transparent 100%)',
+        }}
+      >
         <style>{`
           @keyframes marquee-scroll {
             0%   { transform: translateX(0); }
@@ -85,43 +95,50 @@ function TestimonialCarousel({ theme }) {
           }
           .testimonial-track {
             display: flex;
-            gap: 24px;
+            gap: 28px;
             width: max-content;
-            animation: marquee-scroll 36s linear infinite;
+            animation: marquee-scroll 38s linear infinite;
           }
           .testimonial-track:hover {
             animation-play-state: paused;
           }
         `}</style>
+
         <Box className="testimonial-track">
           {doubled.map((t, i) => (
             <Box key={i} sx={{ width: 420, flexShrink: 0 }}>
               <Card
                 sx={{
-                  height: '100%', borderRadius: 3,
-                  boxShadow: '0 4px 24px rgba(18,90,65,0.07)',
-                  border: '1px solid rgba(18,90,65,0.08)',
-                  transition: 'transform 0.3s, box-shadow 0.3s',
-                  '&:hover': { transform: 'translateY(-6px)', boxShadow: '0 20px 48px rgba(18,90,65,0.13)' },
+                  height: '100%',
+                  borderRadius: 4,
+                  bgcolor: '#ffffff',
+                  boxShadow: '0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02)',
+                  border: '1px solid rgba(226, 232, 240, 0.85)',
+                  transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
+                  '&:hover': {
+                    transform: 'translateY(-6px)',
+                    boxShadow: '0 20px 40px -10px rgba(15, 77, 55, 0.12)',
+                    borderColor: 'rgba(15, 77, 55, 0.25)',
+                  },
                 }}
               >
                 <CardContent sx={{ p: 4 }}>
-                  <Box sx={{ color: theme.palette.secondary.main, opacity: 0.3, mb: 2, lineHeight: 0 }}>
-                    <Quote size={40} />
+                  <Box sx={{ color: theme.palette.secondary.main, opacity: 0.35, mb: 2, lineHeight: 0 }}>
+                    <Quote size={38} />
                   </Box>
-                  <Typography variant="body1" sx={{ color: theme.palette.text.secondary, lineHeight: 1.9, mb: 3, fontStyle: 'italic', fontSize: '0.93rem' }}>
+                  <Typography variant="body1" sx={{ color: '#475569', lineHeight: 1.85, mb: 3, fontStyle: 'italic', fontSize: '0.94rem' }}>
                     "{t.text}"
                   </Typography>
-                  <Box sx={{ height: '1px', bgcolor: 'rgba(18,90,65,0.1)', mb: 3 }} />
+                  <Box sx={{ height: '1px', bgcolor: 'rgba(226, 232, 240, 0.9)', mb: 3 }} />
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <Avatar sx={{ bgcolor: t.avatarBg, width: 46, height: 46, fontWeight: 800, fontSize: '1rem', flexShrink: 0, boxShadow: '0 4px 12px rgba(0,0,0,0.15)' }}>
+                    <Avatar sx={{ bgcolor: t.avatarBg, width: 46, height: 46, fontWeight: 800, fontSize: '1rem', flexShrink: 0, boxShadow: '0 4px 12px rgba(0,0,0,0.12)' }}>
                       {t.avatar}
                     </Avatar>
                     <Box>
-                      <Typography variant="subtitle2" sx={{ fontWeight: 700, color: theme.palette.primary.main }}>{t.name}</Typography>
-                      <Typography variant="caption" sx={{ color: theme.palette.text.secondary, display: 'block', mb: 0.5, fontSize: '0.76rem' }}>{t.role}</Typography>
+                      <Typography variant="subtitle2" sx={{ fontWeight: 700, color: '#0F172A', fontSize: '0.95rem' }}>{t.name}</Typography>
+                      <Typography variant="caption" sx={{ color: '#64748B', display: 'block', mb: 0.5, fontSize: '0.78rem' }}>{t.role}</Typography>
                       <Box sx={{ display: 'flex', gap: 0.3 }}>
-                        {[...Array(5)].map((_, si) => <Star key={si} size={11} fill={theme.palette.secondary.main} color={theme.palette.secondary.main} />)}
+                        {[...Array(5)].map((_, si) => <Star key={si} size={12} fill="#F59E0B" color="#F59E0B" />)}
                       </Box>
                     </Box>
                   </Box>

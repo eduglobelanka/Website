@@ -262,10 +262,9 @@ const Hero = () => {
         <Container maxWidth="xl" sx={{
           position: 'relative', zIndex: 2, flex: 1,
           display: 'flex', alignItems: 'center',
-          pt: { xs: 14, md: 6 }, pb: { xs: 4, md: 6 },
-          pl: { md: '10%' }, // <--- Added padding to shift text right
+          pt: { xs: 12, md: 6 }, pb: { xs: 4, md: 6 },
         }}>
-          <Box sx={{ maxWidth: { xs: '100%', md: 700, lg: 760 }, color: 'white' }}>
+          <Box sx={{ maxWidth: { xs: '100%', md: 680, lg: 740 }, color: 'white' }}>
 
             {/* Badge pill */}
             <motion.div custom={0} initial="hidden" animate="visible" variants={scaleIn}>
@@ -463,56 +462,89 @@ const Hero = () => {
 
 
 
-      {/* ════════════════ FEATURE CARDS ════════════════ */}
-      <Box sx={{ bgcolor: '#f2f6f4', py: { xs: 6, md: 8 } }}>
+      {/* ════════════════ FEATURE CARDS (BENTO MODERN) ════════════════ */}
+      <Box sx={{
+        bgcolor: '#F8FAFC',
+        py: { xs: 7, md: 10 },
+        position: 'relative',
+        borderTop: '1px solid rgba(226, 232, 240, 0.8)',
+      }}>
         <Container maxWidth="xl">
           <Box sx={{
             display: 'grid',
-            gridTemplateColumns: { xs: '1fr 1fr', md: 'repeat(4,1fr)' },
-            gap: { xs: 2, md: 3 },
+            gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' },
+            gap: { xs: 2.5, md: 3 },
           }}>
             {FEATURES.map((f, i) => (
               <motion.div
                 key={f.title}
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.25 }}
-                transition={{ duration: 0.55, delay: i * 0.1, ease: 'easeOut' }}
-                whileHover={{ y: -8, transition: { duration: 0.22 } }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ y: -6, transition: { duration: 0.25 } }}
               >
                 <Box sx={{
-                  bgcolor: 'white', borderRadius: 3.5, p: { xs: 2.5, md: 3.5 },
-                  height: '100%', position: 'relative', overflow: 'hidden',
-                  boxShadow: '0 4px 24px rgba(18,90,65,0.07)',
-                  border: '1px solid rgba(18,90,65,0.06)',
-                  transition: 'box-shadow 0.3s',
-                  '&:hover': { boxShadow: '0 20px 50px rgba(18,90,65,0.14)' },
-                  '&::before': {
-                    content: '""', position: 'absolute', top: 0, left: 0, right: 0, height: 3,
-                    background: i % 2 === 0
-                      ? `linear-gradient(90deg,${GREEN},#1a8e64)`
-                      : `linear-gradient(90deg,${ORANGE},#ffc155)`,
+                  bgcolor: '#ffffff',
+                  borderRadius: 4,
+                  p: { xs: 3, md: 3.8 },
+                  height: '100%',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  boxShadow: '0 4px 20px -2px rgba(15, 23, 42, 0.04), 0 2px 6px -1px rgba(15, 23, 42, 0.02)',
+                  border: '1px solid rgba(226, 232, 240, 0.85)',
+                  transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  '&:hover': {
+                    boxShadow: '0 20px 40px -12px rgba(15, 77, 55, 0.12)',
+                    borderColor: 'rgba(15, 77, 55, 0.25)',
                   },
                 }}>
-                  {/* bg circle */}
+                  {/* Subtle top indicator bar */}
                   <Box sx={{
-                    position: 'absolute', bottom: -20, right: -20, width: 90, height: 90,
-                    borderRadius: '50%', pointerEvents: 'none',
-                    bgcolor: i % 2 === 0 ? 'rgba(18,90,65,0.04)' : 'rgba(244,165,34,0.05)',
+                    position: 'absolute', top: 0, left: 0, right: 0, height: 3.5,
+                    background: i % 2 === 0
+                      ? 'linear-gradient(90deg, #0F4D37, #1B6B4F)'
+                      : 'linear-gradient(90deg, #F59E0B, #FBBF24)',
                   }} />
-                  {/* icon */}
+
+                  {/* Icon */}
                   <Box sx={{
-                    width: 54, height: 54, borderRadius: 2.5, mb: 2.5,
-                    bgcolor: i % 2 === 0 ? 'rgba(18,90,65,0.09)' : 'rgba(244,165,34,0.10)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    color: f.accent,
+                    width: 52,
+                    height: 52,
+                    borderRadius: 3,
+                    mb: 2.5,
+                    bgcolor: i % 2 === 0 ? 'rgba(15, 77, 55, 0.08)' : 'rgba(245, 158, 11, 0.12)',
+                    color: i % 2 === 0 ? '#0F4D37' : '#D97706',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    transition: 'transform 0.3s ease',
+                    boxShadow: i % 2 === 0
+                      ? '0 4px 12px rgba(15, 77, 55, 0.12)'
+                      : '0 4px 12px rgba(245, 158, 11, 0.18)',
                   }}>
                     {f.icon}
                   </Box>
-                  <Typography sx={{ fontFamily: '"Outfit",sans-serif', fontWeight: 700, fontSize: '0.96rem', color: GREEN, mb: 1 }}>
+
+                  <Typography sx={{
+                    fontFamily: '"Outfit", sans-serif',
+                    fontWeight: 700,
+                    fontSize: '1.05rem',
+                    color: '#0F172A',
+                    mb: 1.2,
+                    letterSpacing: '-0.015em',
+                  }}>
                     {f.title}
                   </Typography>
-                  <Typography sx={{ color: '#4A5D54', fontSize: '0.82rem', lineHeight: 1.75 }}>
+
+                  <Typography sx={{
+                    color: '#64748B',
+                    fontSize: '0.86rem',
+                    lineHeight: 1.7,
+                    flex: 1,
+                  }}>
                     {f.desc}
                   </Typography>
                 </Box>

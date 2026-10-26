@@ -42,26 +42,49 @@ const ServicesSection = () => {
     <Box
       id="services-main"
       sx={{
-        py: { xs: 5, md: 8 },
-        background: 'linear-gradient(160deg, #071810 0%, #0f3322 50%, #071810 100%)',
+        py: { xs: 7, md: 11 },
+        background: 'radial-gradient(ellipse 80% 50% at 50% -20%, rgba(27, 107, 79, 0.35), transparent 70%), linear-gradient(180deg, #061710 0%, #082E21 50%, #061710 100%)',
         position: 'relative',
         overflow: 'hidden',
+        borderTop: '1px solid rgba(255,255,255,0.06)',
       }}
     >
-      {/* Decorative background circles */}
-      <Box sx={{ position: 'absolute', top: -120, right: -120, width: 480, height: 480, borderRadius: '50%', border: '60px solid rgba(255,255,255,0.03)', pointerEvents: 'none' }} />
-      <Box sx={{ position: 'absolute', bottom: -100, left: -100, width: 400, height: 400, borderRadius: '50%', border: '50px solid rgba(244,165,34,0.06)', pointerEvents: 'none' }} />
+      {/* Decorative ambient background glows */}
+      <Box sx={{
+        position: 'absolute', top: '10%', right: '-10%',
+        width: 500, height: 500, borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(245, 158, 11, 0.08) 0%, transparent 70%)',
+        pointerEvents: 'none',
+      }} />
+      <Box sx={{
+        position: 'absolute', bottom: '-10%', left: '-10%',
+        width: 500, height: 500, borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(15, 77, 55, 0.3) 0%, transparent 70%)',
+        pointerEvents: 'none',
+      }} />
 
       <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
         {/* Header */}
-        <Box sx={{ textAlign: 'center', mb: { xs: 4, md: 6 } }}>
-          <Typography variant="overline" sx={{ color: '#F4A522', fontWeight: 700, letterSpacing: 4, fontSize: '0.78rem' }}>
-            WHAT WE DO
-          </Typography>
-          <Typography variant="h2" sx={{ color: 'white', mt: 1, mb: 1.5, fontSize: { xs: '1.7rem', md: '2.2rem' }, fontWeight: 900 }}>
+        <Box sx={{ textAlign: 'center', mb: { xs: 5, md: 7 } }}>
+          <Box sx={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 1,
+            bgcolor: 'rgba(245, 158, 11, 0.12)',
+            border: '1px solid rgba(245, 158, 11, 0.25)',
+            borderRadius: 999,
+            px: 2,
+            py: 0.6,
+            mb: 2,
+          }}>
+            <Typography variant="overline" sx={{ color: '#FBBF24', fontWeight: 800, letterSpacing: '0.15em', fontSize: '0.72rem', lineHeight: 1 }}>
+              WHAT WE DO
+            </Typography>
+          </Box>
+          <Typography variant="h2" sx={{ color: 'white', mb: 2, fontSize: { xs: '2rem', md: '2.6rem' }, fontWeight: 800, letterSpacing: '-0.025em' }}>
             Our Core Services
           </Typography>
-          <Typography sx={{ color: 'rgba(255,255,255,0.65)', maxWidth: 560, mx: 'auto', lineHeight: 1.7, fontSize: '0.92rem' }}>
+          <Typography sx={{ color: 'rgba(255,255,255,0.7)', maxWidth: 580, mx: 'auto', lineHeight: 1.8, fontSize: '0.98rem' }}>
             Comprehensive, personalised support crafted for your unique study abroad journey.
           </Typography>
         </Box>

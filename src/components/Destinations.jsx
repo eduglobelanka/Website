@@ -65,15 +65,16 @@ const DestCard = ({ dest, hovered, onEnter, onLeave, onClick }) => {
       onClick={onClick}
       sx={{
         position: 'relative',
-        height: { xs: 260, sm: 300, md: 340 },
-        borderRadius: 3,
+        height: { xs: 280, sm: 320, md: 360 },
+        borderRadius: 4,
         overflow: 'hidden',
         cursor: 'pointer',
+        border: '1px solid rgba(226, 232, 240, 0.8)',
         boxShadow: hovered
-          ? '0 24px 56px rgba(0,0,0,0.28)'
-          : '0 4px 24px rgba(0,0,0,0.08)',
-        transition: 'box-shadow 0.4s ease, transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275)',
-        transform: hovered ? 'translateY(-8px)' : 'none',
+          ? '0 28px 60px -12px rgba(15, 23, 42, 0.28)'
+          : '0 4px 20px -2px rgba(15, 23, 42, 0.08)',
+        transition: 'all 0.45s cubic-bezier(0.16, 1, 0.3, 1)',
+        transform: hovered ? 'translateY(-10px)' : 'none',
       }}
     >
       <CardMedia
@@ -84,60 +85,62 @@ const DestCard = ({ dest, hovered, onEnter, onLeave, onClick }) => {
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          transition: 'transform 0.6s ease',
+          transition: 'transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)',
           transform: hovered ? 'scale(1.08)' : 'scale(1)',
         }}
       />
-      {/* Gradient */}
+      {/* Dynamic Gradient Overlay */}
       <Box
         sx={{
           position: 'absolute',
           inset: 0,
           background: hovered
-            ? 'linear-gradient(to top, rgba(0,0,0,0.90) 0%, rgba(0,0,0,0.2) 60%, transparent 100%)'
-            : 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 60%)',
+            ? 'linear-gradient(to top, rgba(8,46,33,0.95) 0%, rgba(15,23,42,0.5) 50%, rgba(0,0,0,0.1) 100%)'
+            : 'linear-gradient(to top, rgba(8,46,33,0.85) 0%, rgba(15,23,42,0.2) 60%, transparent 100%)',
           transition: 'background 0.4s ease',
         }}
       />
-      {/* Badge */}
+      {/* Modern Badge */}
       <Chip
         label={dest.badge}
         size="small"
         sx={{
           position: 'absolute',
-          top: 14,
-          left: 14,
+          top: 16,
+          left: 16,
           bgcolor: dest.badgeBg,
           color: 'white',
           fontWeight: 700,
-          fontSize: '0.7rem',
-          height: 24,
-          borderRadius: 1,
+          fontSize: '0.72rem',
+          height: 26,
+          borderRadius: 999,
+          boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+          border: '1px solid rgba(255,255,255,0.2)',
         }}
       />
-      {/* Text */}
-      <Box sx={{ position: 'absolute', bottom: 0, left: 0, right: 0, p: 3, color: 'white' }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.8, mb: 0.5 }}>
+      {/* Text Content */}
+      <Box sx={{ position: 'absolute', bottom: 0, left: 0, right: 0, p: { xs: 2.5, md: 3.2 }, color: 'white' }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.8, mb: 0.6 }}>
           <MapPin size={13} color={theme.palette.secondary.light} />
-          <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.75)', fontWeight: 500 }}>
+          <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.85)', fontWeight: 600, fontSize: '0.75rem' }}>
             {dest.programs}
           </Typography>
         </Box>
-        <Typography variant="h5" sx={{ fontWeight: 800, mb: 0.4, fontSize: { xs: '1.2rem', md: '1.4rem' } }}>
+        <Typography variant="h5" sx={{ fontFamily: '"Outfit", sans-serif', fontWeight: 800, mb: 0.5, fontSize: { xs: '1.3rem', md: '1.5rem' }, letterSpacing: '-0.02em' }}>
           {dest.name}
         </Typography>
-        <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.72)', mb: hovered ? 1.5 : 0, transition: 'margin 0.3s ease' }}>
+        <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.78)', fontSize: '0.86rem', mb: hovered ? 1.5 : 0, transition: 'all 0.3s ease' }}>
           {dest.highlight}
         </Typography>
         <Button
           size="small"
           endIcon={<ArrowRight size={14} />}
           sx={{
-            color: theme.palette.secondary.main,
+            color: '#FBBF24',
             fontWeight: 700,
             p: 0,
             minWidth: 0,
-            fontSize: '0.82rem',
+            fontSize: '0.85rem',
             opacity: hovered ? 1 : 0,
             transform: hovered ? 'translateY(0)' : 'translateY(6px)',
             transition: 'all 0.3s ease',

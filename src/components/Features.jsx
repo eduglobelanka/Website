@@ -26,45 +26,58 @@ const Features = () => {
       id="services"
       sx={{
         py: { xs: 8, md: 12 },
-        background: `linear-gradient(160deg, ${theme.palette.primary.dark} 0%, #1d7a55 60%, ${theme.palette.primary.dark} 100%)`,
+        background: 'radial-gradient(ellipse 90% 60% at 50% 10%, rgba(27, 107, 79, 0.45), transparent 70%), linear-gradient(180deg, #061710 0%, #0A3626 50%, #061710 100%)',
         position: 'relative',
         overflow: 'hidden',
       }}
     >
-      {/* Background circles */}
-      <Box sx={{ position: 'absolute', top: -80, right: -80, width: 360, height: 360, borderRadius: '50%', border: '50px solid rgba(255,255,255,0.04)', pointerEvents: 'none' }} />
-      <Box sx={{ position: 'absolute', bottom: -120, left: -80, width: 400, height: 400, borderRadius: '50%', border: '60px solid rgba(255,255,255,0.04)', pointerEvents: 'none' }} />
+      {/* Ambient background glows */}
+      <Box sx={{ position: 'absolute', top: -100, right: -100, width: 450, height: 450, borderRadius: '50%', background: 'radial-gradient(circle, rgba(245,158,11,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      <Box sx={{ position: 'absolute', bottom: -120, left: -100, width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle, rgba(27,107,79,0.25) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
       <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
         {/* Section Header */}
         <Box sx={{ textAlign: 'center', mb: 8 }}>
-          <Typography variant="overline" sx={{ color: theme.palette.secondary.main, fontWeight: 700, letterSpacing: 3, fontSize: '0.8rem' }}>
-            WHY CHOOSE US
-          </Typography>
-          <Typography variant="h2" sx={{ color: 'white', mt: 1, mb: 2, fontSize: { xs: '2rem', md: '2.8rem' } }}>
+          <Box sx={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            bgcolor: 'rgba(245, 158, 11, 0.12)',
+            border: '1px solid rgba(245, 158, 11, 0.25)',
+            borderRadius: 999,
+            px: 2,
+            py: 0.6,
+            mb: 2,
+          }}>
+            <Typography variant="overline" sx={{ color: '#FBBF24', fontWeight: 800, letterSpacing: '0.15em', fontSize: '0.72rem', lineHeight: 1 }}>
+              WHY CHOOSE US
+            </Typography>
+          </Box>
+          <Typography variant="h2" sx={{ color: 'white', mb: 2, fontSize: { xs: '2rem', md: '2.8rem' }, fontWeight: 800, letterSpacing: '-0.025em' }}>
             Why Choose EduGlobe Lanka?
           </Typography>
-          <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.7)', maxWidth: 580, mx: 'auto', lineHeight: 1.8 }}>
+          <Typography variant="body1" sx={{ color: 'rgba(255,255,255,0.72)', maxWidth: 600, mx: 'auto', lineHeight: 1.8, fontSize: '0.98rem' }}>
             We are committed to making your dream of studying abroad a reality — with trusted expertise and personalised guidance every step of the way.
           </Typography>
         </Box>
 
         {/* Feature Cards */}
-        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: 'repeat(3,1fr)' }, gap: 3 }}>
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: 'repeat(3,1fr)' }, gap: 3.2 }}>
           {features.map((feat, i) => (
             <Box
               key={i}
               sx={{
-                background: 'rgba(255,255,255,0.06)',
-                border: '1px solid rgba(255,255,255,0.1)',
-                borderRadius: 3,
-                p: 4,
-                transition: 'all 0.3s ease',
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(255,255,255,0.08)',
+                borderRadius: 4,
+                p: { xs: 3.5, md: 4.2 },
+                backdropFilter: 'blur(12px)',
+                transition: 'all 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
                 cursor: 'default',
                 '&:hover': {
-                  background: 'rgba(255,255,255,0.11)',
+                  background: 'rgba(255,255,255,0.08)',
+                  borderColor: 'rgba(245, 158, 11, 0.35)',
                   transform: 'translateY(-6px)',
-                  boxShadow: '0 16px 40px rgba(0,0,0,0.2)',
+                  boxShadow: '0 20px 40px -10px rgba(0,0,0,0.3)',
                 },
               }}
             >
